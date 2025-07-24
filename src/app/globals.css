@@ -1,26 +1,78 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --shadow-aceternity: 0px 2px 3px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+  --color-primary: var(--color-neutral-800);
+  --color-secondary: var(--color-neutral-500);
+  --bg-color: #F9FAFB;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.dark {
+  --color-primary: var(--color-neutral-100);
+  --color-secondary: var(--color-neutral-400);
+  --bg-color: #121212;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+  }
+
+  #editorjs h1 {
+    @apply text-4xl font-bold;
+  }
+  #editorjs h2 {
+    @apply text-3xl font-semibold;
+  }
+  #editorjs h3 {
+    @apply text-2xl font-semibold;
+  }
+  #editorjs h4 {
+    @apply text-xl font-medium;
+  }
+  #editorjs h5 {
+    @apply text-lg font-normal;
+  }
+  #editorjs h6 {
+    @apply text-base font-normal;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes sine-horizontal {
+  0%,
+  100% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes sine-vertical {
+  0%,
+  100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(100%);
+  }
+}
+
+.sine-x {
+  animation: sine-horizontal 4s ease-in-out infinite;
+}
+
+.sine-y {
+  animation: sine-vertical 4s ease-in-out infinite;
+}
+
+.mask-gradient {
+  -webkit-mask-image: linear-gradient(to top, transparent, black);
+  mask-image: linear-gradient(to top, transparent, black);
 }
