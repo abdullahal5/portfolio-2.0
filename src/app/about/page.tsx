@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award } from "lucide-react";
+import { Award, ExternalLink } from "lucide-react";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
 import { TimelineItem } from "./_components/Timeline";
@@ -189,6 +189,18 @@ const AboutPage = () => {
                       <p className="text-xs text-neutral-500 dark:text-neutral-500">
                         {course.year}
                       </p>
+
+                      {course.certificate && course.certificateUrl && (
+                        <a
+                          href={course.certificateUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
+                        >
+                          View Certificate
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      )}
                     </motion.div>
                   ))}
                 </div>

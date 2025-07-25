@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -99,14 +100,6 @@ export default function LivePreview({ code }: LivePreviewProps) {
 
     // Handle primitives with visual representation
     return <PrimitiveVisualization value={result} />;
-  };
-
-  const renderValue = (value: any): string => {
-    if (value === null) return "null";
-    if (value === undefined) return "undefined";
-    if (typeof value === "function") return value.toString();
-    if (typeof value === "object") return JSON.stringify(value, null, 2);
-    return String(value);
   };
 
   return (
@@ -366,6 +359,7 @@ function ObjectVisualization({ object }: { object: any }) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 function FunctionVisualization({ func }: { func: Function }) {
   const [result, setResult] = useState<any>(null);
   const [hasExecuted, setHasExecuted] = useState(false);

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Image from "next/image";
@@ -306,7 +308,7 @@ export const BentoGridItem = ({
     }
   }, [currentLineIndex, isHovered]);
 
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,

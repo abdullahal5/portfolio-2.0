@@ -180,6 +180,7 @@ export const experience = [
     startDate: "Aug 2019",
     endDate: "May 2020",
     current: false,
+    completed: true,
     technologies: ["HTML", "CSS", "JavaScript", "WordPress", "PHP"],
     description:
       "Developed custom WordPress themes, maintained client websites, and learned modern development practices.",
@@ -222,10 +223,11 @@ export const education = [
     id: 2,
     institution: "FreeCodeCamp",
     degree: "Full Stack Web Development Certification",
-    gpa: null,
+    gpa: "4.50/5.00",
     startDate: "2018",
     endDate: "2019",
     current: false,
+    completed: true,
     logo: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=60&h=60&fit=crop",
   },
 ];
@@ -237,17 +239,20 @@ export const courses = [
     provider: "Epic React by Kent C. Dodds",
     year: "2023",
     certificate: true,
+    certificateUrl: "https://yourdomain.com/certificates/react-patterns.pdf",
   },
   {
     name: "AWS Solutions Architect",
     provider: "Amazon Web Services",
     year: "2022",
     certificate: true,
+    certificateUrl: "https://yourdomain.com/certificates/aws-solutions.pdf",
   },
   {
     name: "UI/UX Design Fundamentals",
     provider: "Google UX Design Certificate",
     year: "2021",
     certificate: true,
+    certificateUrl: "https://yourdomain.com/certificates/ui-ux.pdf",
   },
 ];

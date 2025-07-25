@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
 import { GridPattern } from "../ui/grid-pattern";
 import { cn } from "@/lib/utils";
+import { FaArrowRight } from "react-icons/fa";
 
 const Banner = () => {
   const container = {
@@ -21,7 +23,7 @@ const Banner = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const gradientText = {
+  const gradientText: any = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -39,6 +41,8 @@ const Banner = () => {
     hover: { y: 5, transition: { duration: 0.3 } },
   };
 
+  const MotionFaArrow = motion(FaArrowRight);
+
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Grid Background */}
@@ -54,45 +58,7 @@ const Banner = () => {
         )}
       />
 
-      <div
-        className="absolute inset-0 opacity-40 dark:opacity-20"
-        //     style={{
-        //       backgroundImage: `
-        //   linear-gradient(to right, rgba(139, 92, 246, 0.3) 2px, transparent 1px),
-        //   linear-gradient(to bottom, rgba(139, 92, 246, 0.3) 2px, transparent 1px)
-        // `,
-        //       backgroundSize: "40px 40px",
-        //       maskImage:
-        //         "radial-gradient(ellipse 60% 90% at 50% 0%, #000 70%, transparent 100%)",
-        //       WebkitMaskImage:
-        //         "radial-gradient(ellipse 60% 80% at 50% 0%, #000 70%, transparent 100%)",
-        //     }}
-      >
-        {/* Sine line moving horizontally */}
-        {/* {[20, 35, 50, 65, 80].map((top, index) => (
-          <div
-            key={`h-${index}`}
-            className="sine-x absolute left-0 h-[2px] w-full bg-gradient-to-r from-gray-400 to-transparent opacity-80 dark:bg-gradient-to-r dark:from-white dark:to-transparent"
-            style={{
-              top: `${top}%`,
-              animationDuration: `${3 + (index % 3)}s`,
-              animationDelay: `${index * 0.5}s`,
-            }}
-          />
-        ))}
-
-        {[10, 30, 50, 70, 90].map((left, index) => (
-          <div
-            key={`v-${index}`}
-            className="sine-y absolute top-0 h-full w-[2px] bg-gradient-to-b from-gray-400 to-transparent opacity-80 dark:bg-gradient-to-b dark:from-white dark:to-transparent"
-            style={{
-              left: `${left}%`,
-              animationDuration: `${4 + (index % 2)}s`,
-              animationDelay: `${index * 0.3}s`,
-            }}
-          />
-        ))} */}
-      </div>
+      <div className="absolute inset-0 opacity-40 dark:opacity-20"></div>
 
       {/* Simple Gradient Orbs */}
       <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-purple-300 opacity-50 blur-3xl dark:bg-purple-500 dark:opacity-30" />
@@ -199,21 +165,11 @@ const Banner = () => {
           >
             <span className="flex items-center gap-2">
               View Portfolio
-              <motion.svg
+              <MotionFaArrow
                 animate={{ x: [0, 4, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}
                 className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </motion.svg>
+              />
             </span>
           </motion.button>
         </motion.div>
