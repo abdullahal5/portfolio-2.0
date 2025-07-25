@@ -195,7 +195,6 @@ export function TimelineItem({
                 <div className="relative flex items-center">
                   {item.technologies.map(
                     (techName: string, techIdx: number) => {
-                      console.log(techName);
                       const tech = technologies[techName] || {
                         icon: "❓",
                         color: "#888888",

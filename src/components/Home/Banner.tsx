@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
 import { GridPattern } from "../ui/grid-pattern";
 import { cn } from "@/lib/utils";
-import { FaArrowRight } from "react-icons/fa";
+import { FileText, Mail } from "lucide-react";
+import AnimatedSkills from "./_components/animated-skills";
 
 const Banner = () => {
   const container = {
@@ -40,8 +41,6 @@ const Banner = () => {
     },
     hover: { y: 5, transition: { duration: 0.3 } },
   };
-
-  const MotionFaArrow = motion(FaArrowRight);
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -86,7 +85,7 @@ const Banner = () => {
               className="h-2 w-2 rounded-full bg-green-500 dark:bg-green-400"
             />
             <span className="text-sm font-medium text-gray-700 dark:text-slate-300">
-              Available for Work
+              Open to Opportunities
             </span>
           </motion.div>
         </motion.div>
@@ -120,11 +119,9 @@ const Banner = () => {
           initial="hidden"
           animate="show"
           transition={{ delay: 0.6 }}
-          className="mb-6"
+          className="mb-5 mt-2"
         >
-          <p className="text-xl font-semibold text-purple-600 md:text-2xl dark:text-purple-400">
-            Software Engineer
-          </p>
+          <AnimatedSkills/>
         </motion.div>
 
         {/* Description */}
@@ -152,25 +149,21 @@ const Banner = () => {
             transition={{ delay: 1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="rounded-full bg-gray-900 px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-gray-800 hover:shadow-lg dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+            className="flex items-center gap-2 rounded-full bg-gray-900 px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-gray-800 hover:shadow-lg dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
           >
+            <Mail className="h-4 w-4" />
             Get In Touch
           </motion.button>
+
           <motion.button
             variants={item}
             transition={{ delay: 1.1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="rounded-full border border-gray-300 bg-white px-8 py-3 font-semibold text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:shadow-md dark:border-gray-600 dark:bg-[#1c1c1c] dark:text-slate-300 dark:hover:bg-[#333]"
+            className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-8 py-3 font-semibold text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:shadow-md dark:border-gray-600 dark:bg-[#1c1c1c] dark:text-slate-300 dark:hover:bg-[#333]"
           >
-            <span className="flex items-center gap-2">
-              View Portfolio
-              <MotionFaArrow
-                animate={{ x: [0, 4, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="h-4 w-4"
-              />
-            </span>
+            <FileText className="h-4 w-4" />
+            Resume
           </motion.button>
         </motion.div>
 
