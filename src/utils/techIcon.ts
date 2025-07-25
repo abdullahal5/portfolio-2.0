@@ -1,4 +1,4 @@
-import { FaReact, FaNodeJs, FaDocker, FaGitAlt } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaDocker, FaGitAlt, FaAws } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -18,6 +18,12 @@ import {
   SiGithub,
   SiVite,
   SiNestjs,
+  SiSass,
+  SiFigma,
+  SiHtml5,
+  SiCss3,
+  SiWordpress,
+  SiPhp,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
@@ -51,4 +57,11 @@ export const technologies: { [key: string]: TechInfo } = {
   VSCode: { name: "VS Code", icon: VscVscode, color: "#007ACC" },
   Vite: { name: "Vite", icon: SiVite, color: "#646CFF" },
   NestJS: { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
+  AWS: { name: "AWS", icon: FaAws, color: "#FF9900" },
+  Sass: { name: "Sass", icon: SiSass, color: "#CD6799" },
+  Figma: { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+  HTML: { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+  CSS: { name: "CSS", icon: SiCss3, color: "#1572B6" },
+  WordPress: { name: "WordPress", icon: SiWordpress, color: "#21759B" },
+  PHP: { name: "PHP", icon: SiPhp, color: "#777BB4" },
 };
