@@ -1,6 +1,9 @@
+"use client";
+
 import { contactInfo, socialLinks } from "@/data/about";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Download, ExternalLink } from "lucide-react";
 
 const LeftSideStickyCard = () => {
   return (
@@ -28,6 +31,7 @@ const LeftSideStickyCard = () => {
             />
           </div>
         </motion.div>
+
         {/* Name and Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,33 +46,31 @@ const LeftSideStickyCard = () => {
             Senior UI/UX Designer & Developer
           </p>
         </motion.div>
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="mb-8 flex justify-center gap-3"
-        >
-          {socialLinks.map((social, index) => (
+
+        {/* Social Links - Modern Style */}
+        <motion.div className="mb-8 flex justify-center gap-2">
+          {socialLinks.map((social) => (
             <motion.a
-              key={index}
+              key={social.name}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.9 }}
-              className={`rounded-full p-3 transition-all ${social.color} bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600`}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className={`p-2 text-neutral-500 dark:text-neutral-500 ${social.color} rounded-lg transition-colors duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-800/50`}
+              aria-label={social.name}
             >
               <social.icon className="h-5 w-5" />
             </motion.a>
           ))}
         </motion.div>
+
         {/* Contact Information */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="space-y-4"
+          className="mb-8 space-y-3"
         >
           {contactInfo.map((info, index) => (
             <motion.div
@@ -76,21 +78,64 @@ const LeftSideStickyCard = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
-              className="flex cursor-pointer items-center gap-4 rounded-xl p-3 transition-all hover:bg-gray-100 dark:hover:bg-gray-700/50"
+              className="group flex cursor-pointer items-center gap-4 rounded-xl p-3 transition-all duration-200 hover:bg-neutral-50 dark:hover:bg-neutral-800/30"
             >
-              <div className={`rounded-lg p-2 ${info.bgColor}`}>
-                <info.icon className={`h-5 w-5 ${info.color}`} />
+              <div className="rounded-lg bg-neutral-100 p-2 transition-colors duration-200 dark:bg-neutral-800">
+                <info.icon
+                  className={`h-4 w-4 text-neutral-600 transition-colors duration-200 ${info.color}`}
+                />
               </div>
-              <div>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              <div className="flex-1">
+                <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
                   {info.label}
                 </p>
-                <p className="font-semibold text-gray-900 dark:text-white">
+                <p className="text-sm font-semibold text-neutral-900 dark:text-white">
                   {info.value}
                 </p>
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Download Resume Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="space-y-3"
+        >
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-900 px-4 py-3 font-medium text-white shadow-sm transition-all duration-200 hover:bg-neutral-800 hover:shadow-md dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100"
+          >
+            <Download className="h-4 w-4" />
+            Download Resume
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex w-full items-center justify-center gap-2 rounded-xl border border-neutral-300 px-4 py-3 font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-800/50"
+          >
+            <ExternalLink className="h-4 w-4" />
+            View Portfolio
+          </motion.button>
+        </motion.div>
+
+        {/* Status Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="mt-6 border-t border-neutral-200 pt-6 dark:border-neutral-800"
+        >
+          <div className="flex items-center justify-center gap-2 text-sm">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
+            <span className="text-neutral-600 dark:text-neutral-400">
+              Available for projects
+            </span>
+          </div>
         </motion.div>
       </div>
     </motion.div>

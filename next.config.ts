@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "github-profile-summary-cards.vercel.app",
+      },
+      {
+        protocol: "https",
         hostname: "**",
       },
       {

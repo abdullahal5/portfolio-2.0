@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { motion } from "framer-motion";
@@ -207,6 +208,19 @@ const AboutPage = () => {
                   ))}
                 </div>
               </motion.section>
+
+              <section className="my-12 w-full">
+                <h2 className="mb-4 text-2xl font-semibold">
+                  GitHub Activity
+                </h2>
+                <div>
+                  <img
+                    src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=abdullahal5&theme=aura"
+                    alt="GitHub profile"
+                    className="w-full rounded-lg shadow"
+                  />
+                </div>
+              </section>
             </div>
           </motion.div>
         </div>

@@ -1,7 +1,6 @@
 import {
   Facebook,
   Twitter,
-  Instagram,
   Linkedin,
   Phone,
   Mail,
@@ -18,11 +17,35 @@ import {
 import { Calendar, MapPin, Code } from "lucide-react";
 
 export const socialLinks = [
-  { icon: Facebook, href: "#", color: "text-blue-600 dark:text-blue-400" },
-  { icon: Twitter, href: "#", color: "text-sky-500 dark:text-sky-400" },
-  { icon: Instagram, href: "#", color: "text-pink-500 dark:text-pink-400" },
-  { icon: Linkedin, href: "#", color: "text-blue-700 dark:text-blue-500" },
-  { icon: Github, href: "#", color: "text-gray-800 dark:text-gray-300" },
+  {
+    name: "facebook",
+    icon: Facebook,
+    href: "#",
+    color: "hover:text-[#0866FF] dark:hover:text-[#0866FF]",
+  },
+  {
+    name: "twitter",
+    icon: Twitter,
+    href: "#",
+    color: "hover:text-blue-500 dark:hover:text-blue-400",
+  },
+  {
+    name: "Email",
+    href: "mailto:your.email@example.com",
+    icon: Mail,
+    color: "hover:text-red-600 dark:hover:text-red-400",
+  },
+  {
+    name: "linkedin",
+    icon: Linkedin,
+    href: "#",
+    color: "hover:text-blue-600 dark:hover:text-blue-400",
+  },
+  {
+    icon: Github,
+    href: "#",
+    color: "hover:text-neutral-900 dark:hover:text-white",
+  },
 ];
 
 export const services = [
@@ -66,28 +89,24 @@ export const contactInfo = [
     label: "Phone",
     value: "+1 (234) 567-8900",
     color: "text-pink-500 dark:text-pink-400",
-    bgColor: "bg-pink-50 dark:bg-pink-900/30",
   },
   {
     icon: Mail,
     label: "Email",
     value: "hello@example.com",
     color: "text-blue-500 dark:text-blue-400",
-    bgColor: "bg-blue-50 dark:bg-blue-900/30",
   },
   {
     icon: MapPin,
     label: "Location",
     value: "San Francisco, CA",
     color: "text-red-500 dark:text-red-400",
-    bgColor: "bg-red-50 dark:bg-red-900/30",
   },
   {
     icon: Calendar,
     label: "Birthday",
     value: "May 27, 1990",
     color: "text-purple-500 dark:text-purple-400",
-    bgColor: "bg-purple-50 dark:bg-purple-900/30",
   },
 ];
 
