@@ -6,7 +6,7 @@ const Projects = () => {
   const projects = [
     {
       title: "Macbook Mockup",
-      src: "https://aceternity.com/cdn-cgi/image/width=1080/https://assets.aceternity.com/macbook-scroll.png",
+      image: "https://aceternity.com/cdn-cgi/image/width=1080/https://assets.aceternity.com/macbook-scroll.png",
       description:
         "A clone of Apple website that showcases their products and services",
       href: "#",
@@ -25,7 +25,7 @@ const Projects = () => {
     },
     {
       title: "3D Card",
-      src: "https://aceternity.com/cdn-cgi/image/width=1080/https://assets.aceternity.com/cloudinary_bkp/3d-card.png",
+      image: "https://aceternity.com/cdn-cgi/image/width=1080/https://assets.aceternity.com/cloudinary_bkp/3d-card.png",
       description:
         "A flight simulator that allows you to experience the thrill of flying",
       href: "#",
@@ -42,7 +42,7 @@ const Projects = () => {
     },
     {
       title: "Instant Feedback",
-      src: "https://aceternity.com/cdn-cgi/image/width=1080/https://assets.aceternity.com/animated-testimonials.webp",
+      image: "https://aceternity.com/cdn-cgi/image/width=1080/https://assets.aceternity.com/animated-testimonials.webp",
       description: "Instant visual feedback for interactive UI testing",
       href: "#",
       tech: ["Vue.js", "Node.js", "MongoDB", "VSCode", "GitHub"],

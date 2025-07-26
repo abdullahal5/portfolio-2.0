@@ -7,10 +7,11 @@ import { cn } from "@/lib/utils";
 import { TimelineItem } from "./_components/Timeline";
 import LeftSideStickyCard from "./_components/LeftSideStickyCard";
 import { courses, education, experience } from "@/data/about";
+import SectionTitle from "@/components/shared/title/SectionTitle";
 
 const AboutPage = () => {
   return (
-    <div className="relative pt-44 transition-colors duration-300">
+    <div className="relative pt-20 transition-colors duration-300">
       {/* blue orb */}
       <motion.div
         initial={{ x: "-10%", y: "20%", opacity: 0.3 }}
@@ -69,7 +70,8 @@ const AboutPage = () => {
           )}
         />
       </div>
-      <div className="relative z-10 mx-auto px-4 py-8 lg:py-16">
+      <SectionTitle title="About" />
+      <div className="relative z-10 mx-auto px-4 py-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
           {/* Left Side - Sticky Profile Card */}
           <LeftSideStickyCard />

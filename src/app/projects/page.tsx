@@ -5,21 +5,49 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
-  Filter,
   Tag,
+  Star,
+  X,
+  Database,
+  Globe,
+  Filter,
 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Card } from "@/components/ui/card";
 import ProjectCard from "@/components/Projects/ProjectCard";
+import { GridPattern } from "@/components/ui/grid-pattern";
+import { cn } from "@/lib/utils";
+import SectionTitle from "@/components/shared/title/SectionTitle";
 
-// Demo portfolio data
+// Enhanced portfolio data with frontend and backend projects
 const portfolioProjects = [
   {
     id: 1,
     title: "E-Commerce Dashboard",
     description:
       "A comprehensive admin dashboard for managing online stores with real-time analytics, inventory management, and customer insights.",
-    image: "/placeholder.svg?height=300&width=500&text=E-Commerce+Dashboard",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "Web Application",
-    tech: ["React", "Next.js", "TypeScript", "Tailwind", "PostgreSQL"],
+    type: "Frontend",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind", "Chart.js"],
     demoUrl: "https://demo.example.com",
     githubUrl: "https://github.com/example/ecommerce-dashboard",
     date: "2024-01-15",
@@ -30,9 +58,11 @@ const portfolioProjects = [
     title: "AI Chat Application",
     description:
       "Real-time chat application powered by AI with smart responses, file sharing, and multi-language support.",
-    image: "/placeholder.svg?height=300&width=500&text=AI+Chat+App",
+    image:
+      "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "AI/ML",
-    tech: ["React", "Node.js", "SocketIO", "OpenAI", "MongoDB"],
+    type: "Frontend",
+    tech: ["React", "Socket.IO", "OpenAI", "Tailwind", "Framer Motion"],
     demoUrl: "https://chat.example.com",
     githubUrl: "https://github.com/example/ai-chat",
     date: "2023-12-10",
@@ -40,14 +70,16 @@ const portfolioProjects = [
   },
   {
     id: 3,
-    title: "Task Management System",
+    title: "REST API for Task Management",
     description:
-      "Collaborative project management tool with kanban boards, time tracking, and team collaboration features.",
-    image: "/placeholder.svg?height=300&width=500&text=Task+Management",
-    category: "Productivity",
-    tech: ["Vue.js", "Express", "MySQL", "Redis", "Docker"],
-    demoUrl: "https://tasks.example.com",
-    githubUrl: "https://github.com/example/task-manager",
+      "Scalable REST API with authentication, real-time notifications, file uploads, and comprehensive task management endpoints.",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "API Development",
+    type: "Backend",
+    tech: ["Node.js", "Express", "MongoDB", "JWT", "Socket.IO", "Multer"],
+    demoUrl: "https://api-docs.example.com",
+    githubUrl: "https://github.com/example/task-api",
     date: "2023-11-20",
     featured: false,
   },
@@ -56,8 +88,10 @@ const portfolioProjects = [
     title: "Weather Forecast App",
     description:
       "Beautiful weather application with detailed forecasts, interactive maps, and location-based alerts.",
-    image: "/placeholder.svg?height=300&width=500&text=Weather+App",
+    image:
+      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "Mobile App",
+    type: "Frontend",
     tech: ["React Native", "TypeScript", "Weather API", "Maps SDK"],
     demoUrl: "https://weather.example.com",
     githubUrl: "https://github.com/example/weather-app",
@@ -66,20 +100,16 @@ const portfolioProjects = [
   },
   {
     id: 5,
-    title: "Cryptocurrency Tracker",
+    title: "Microservices Architecture",
     description:
-      "Real-time cryptocurrency price tracking with portfolio management, alerts, and market analysis tools.",
-    image: "/placeholder.svg?height=300&width=500&text=Crypto+Tracker",
-    category: "Finance",
-    tech: [
-      "React",
-      "Chart.js",
-      "SocketIO",
-      "CoinGecko API",
-      "Styled Components",
-    ],
-    demoUrl: "https://crypto.example.com",
-    githubUrl: "https://github.com/example/crypto-tracker",
+      "Distributed microservices system with API Gateway, service discovery, load balancing, and monitoring.",
+    image:
+      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "System Architecture",
+    type: "Backend",
+    tech: ["Docker", "Kubernetes", "Node.js", "Redis", "PostgreSQL", "Nginx"],
+    demoUrl: "https://architecture-docs.example.com",
+    githubUrl: "https://github.com/example/microservices",
     date: "2023-09-15",
     featured: true,
   },
@@ -88,9 +118,11 @@ const portfolioProjects = [
     title: "Social Media Analytics",
     description:
       "Comprehensive social media analytics platform with engagement metrics, audience insights, and content optimization.",
-    image: "/placeholder.svg?height=300&width=500&text=Social+Analytics",
+    image:
+      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "Analytics",
-    tech: ["Python", "Django", "React", "D3.js", "PostgreSQL", "Celery"],
+    type: "Frontend",
+    tech: ["React", "D3.js", "Chart.js", "Tailwind", "Framer Motion"],
     demoUrl: "https://analytics.example.com",
     githubUrl: "https://github.com/example/social-analytics",
     date: "2023-08-30",
@@ -98,14 +130,16 @@ const portfolioProjects = [
   },
   {
     id: 7,
-    title: "Recipe Sharing Platform",
+    title: "GraphQL API Server",
     description:
-      "Community-driven recipe sharing platform with ingredient tracking, meal planning, and cooking tutorials.",
-    image: "/placeholder.svg?height=300&width=500&text=Recipe+Platform",
-    category: "Social Platform",
-    tech: ["Next.js", "Prisma", "Tailwind"],
-    demoUrl: "https://recipes.example.com",
-    githubUrl: "https://github.com/example/recipe-platform",
+      "High-performance GraphQL API with real-time subscriptions, caching, and advanced query optimization.",
+    image:
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "API Development",
+    type: "Backend",
+    tech: ["GraphQL", "Apollo Server", "PostgreSQL", "Redis", "DataLoader"],
+    demoUrl: "https://graphql-playground.example.com",
+    githubUrl: "https://github.com/example/graphql-api",
     date: "2023-07-12",
     featured: false,
   },
@@ -114,13 +148,45 @@ const portfolioProjects = [
     title: "Learning Management System",
     description:
       "Modern LMS with interactive courses, progress tracking, video streaming, and certification management.",
-    image: "/placeholder.svg?height=300&width=500&text=Learning+Management",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "Education",
-    tech: ["React", "Node.js", "MongoDB", "AWS", "Stripe", "WebRTC"],
+    type: "Frontend",
+    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "WebRTC"],
     demoUrl: "https://learn.example.com",
     githubUrl: "https://github.com/example/lms",
     date: "2023-06-25",
     featured: true,
+  },
+  {
+    id: 9,
+    title: "Real-time Chat Backend",
+    description:
+      "Scalable chat backend with WebSocket connections, message queuing, user presence, and file sharing capabilities.",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "Real-time Systems",
+    type: "Backend",
+    tech: ["Node.js", "Socket.IO", "Redis", "MongoDB", "AWS S3", "JWT"],
+    demoUrl: "https://chat-api-docs.example.com",
+    githubUrl: "https://github.com/example/chat-backend",
+    date: "2023-05-18",
+    featured: true,
+  },
+  {
+    id: 10,
+    title: "Cryptocurrency Portfolio Tracker",
+    description:
+      "Real-time cryptocurrency portfolio tracking with advanced analytics, price alerts, and market insights.",
+    image:
+      "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "Finance",
+    type: "Frontend",
+    tech: ["React", "TypeScript", "Chart.js", "Tailwind", "WebSocket"],
+    demoUrl: "https://crypto-tracker.example.com",
+    githubUrl: "https://github.com/example/crypto-portfolio",
+    date: "2023-04-22",
+    featured: false,
   },
 ];
 
@@ -128,30 +194,28 @@ const categories = [
   "All",
   "Web Application",
   "AI/ML",
-  "Productivity",
+  "API Development",
   "Mobile App",
-  "Finance",
+  "System Architecture",
   "Analytics",
-  "Social Platform",
   "Education",
+  "Real-time Systems",
+  "Finance",
 ];
+
 const allTechnologies = Array.from(
   new Set(portfolioProjects.flatMap((project) => project.tech)),
-);
+).sort();
 
 export default function PortfolioPage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([
-    "All",
-  ]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedType, setSelectedType] = useState("All");
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
     [],
   );
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState({
-    categories: false,
-    technologies: false,
-  });
+  const [showFilters, setShowFilters] = useState(false);
 
   const filteredProjects = useMemo(() => {
     return portfolioProjects.filter((project) => {
@@ -163,37 +227,34 @@ export default function PortfolioPage() {
         );
 
       const matchesCategory =
-        selectedCategories.includes("All") ||
-        selectedCategories.includes(project.category);
+        selectedCategory === "All" || project.category === selectedCategory;
+
+      const matchesType =
+        selectedType === "All" || project.type === selectedType;
 
       const matchesTechnology =
         selectedTechnologies.length === 0 ||
-        selectedTechnologies.some((tech) =>
-          project.tech.includes(tech),
-        );
+        selectedTechnologies.some((tech) => project.tech.includes(tech));
 
       const matchesFeatured = !showFeaturedOnly || project.featured;
 
       return (
-        matchesSearch && matchesCategory && matchesTechnology && matchesFeatured
+        matchesSearch &&
+        matchesCategory &&
+        matchesType &&
+        matchesTechnology &&
+        matchesFeatured
       );
     });
-  }, [searchTerm, selectedCategories, selectedTechnologies, showFeaturedOnly]);
+  }, [
+    searchTerm,
+    selectedCategory,
+    selectedType,
+    selectedTechnologies,
+    showFeaturedOnly,
+  ]);
 
-  const handleCategoryChange = (category: string) => {
-    if (category === "All") {
-      setSelectedCategories(["All"]);
-    } else {
-      setSelectedCategories((prev) => {
-        const newCategories = prev.includes(category)
-          ? prev.filter((c) => c !== category)
-          : [...prev.filter((c) => c !== "All"), category];
-        return newCategories.length === 0 ? ["All"] : newCategories;
-      });
-    }
-  };
-
-  const handleTechnologyChange = (technology: string) => {
+  const handleTechnologyToggle = (technology: string) => {
     setSelectedTechnologies((prev) =>
       prev.includes(technology)
         ? prev.filter((t) => t !== technology)
@@ -201,12 +262,19 @@ export default function PortfolioPage() {
     );
   };
 
-  const toggleDropdown = (type: "categories" | "technologies") => {
-    setDropdownOpen((prev) => ({
-      ...prev,
-      [type]: !prev[type],
-    }));
+  const clearAllFilters = () => {
+    setSearchTerm("");
+    setSelectedCategory("All");
+    setSelectedType("All");
+    setSelectedTechnologies([]);
+    setShowFeaturedOnly(false);
   };
+
+  const activeFiltersCount =
+    (selectedCategory !== "All" ? 1 : 0) +
+    (selectedType !== "All" ? 1 : 0) +
+    selectedTechnologies.length +
+    (showFeaturedOnly ? 1 : 0);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -231,176 +299,473 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
-          <h1 className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent md:text-6xl">
-            My Portfolio
-          </h1>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            Explore my collection of projects showcasing modern web development,
-            AI integration, and innovative solutions.
-          </p>
-        </motion.div>
-
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8 space-y-4"
-        >
-          {/* Search Bar */}
-          <div className="relative mx-auto max-w-md">
-            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform" />
-            <input
-              type="text"
-              placeholder="Search projects..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 pl-10 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-            />
-          </div>
-
-          {/* Filter Controls */}
-          <div className="flex flex-wrap justify-center gap-4">
-            {/* Category Filter */}
-            <div className="relative">
-              <button
-                onClick={() => toggleDropdown("categories")}
-                className="flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
-              >
-                <Filter className="h-4 w-4" />
-                Categories ({selectedCategories.length})
-              </button>
-              {dropdownOpen.categories && (
-                <div className="absolute z-10 mt-1 w-56 rounded-md border border-gray-200 bg-white shadow-lg dark:border-gray-600 dark:bg-gray-800">
-                  {categories.map((category) => (
-                    <label
-                      key={category}
-                      className="flex cursor-pointer items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedCategories.includes(category)}
-                        onChange={() => handleCategoryChange(category)}
-                        className="mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600"
-                      />
-                      {category}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Technology Filter */}
-            <div className="relative">
-              <button
-                onClick={() => toggleDropdown("technologies")}
-                className="flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
-              >
-                <Tag className="h-4 w-4" />
-                Technologies ({selectedTechnologies.length})
-              </button>
-              {dropdownOpen.technologies && (
-                <div className="absolute z-10 mt-1 max-h-64 w-56 overflow-y-auto rounded-md border border-gray-200 bg-white shadow-lg dark:border-gray-600 dark:bg-gray-800">
-                  {allTechnologies.map((tech) => (
-                    <label
-                      key={tech}
-                      className="flex cursor-pointer items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedTechnologies.includes(tech)}
-                        onChange={() => handleTechnologyChange(tech)}
-                        className="mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600"
-                      />
-                      {tech}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Featured Filter */}
-            <button
-              onClick={() => setShowFeaturedOnly(!showFeaturedOnly)}
-              className={`flex items-center gap-2 rounded-md px-4 py-2 ${
-                showFeaturedOnly
-                  ? "bg-blue-600 text-white"
-                  : "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
-              }`}
-            >
-              ⭐ Featured Only
-            </button>
-          </div>
-
-          {/* Active Filters */}
-          {(selectedCategories.length > 1 ||
-            !selectedCategories.includes("All") ||
-            selectedTechnologies.length > 0) && (
-            <div className="flex flex-wrap justify-center gap-2">
-              {selectedCategories
-                .filter((cat) => cat !== "All")
-                .map((category) => (
-                  <span
-                    key={category}
-                    className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-200"
-                  >
-                    {category}
-                    <button
-                      onClick={() => handleCategoryChange(category)}
-                      className="ml-1 rounded-full p-0.5 hover:bg-gray-200 dark:hover:bg-gray-600"
-                    >
-                      ×
-                    </button>
-                  </span>
-                ))}
-              {selectedTechnologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
-                >
-                  {tech}
-                  <button
-                    onClick={() => handleTechnologyChange(tech)}
-                    className="ml-1 rounded-full p-0.5 hover:bg-gray-200 dark:hover:bg-gray-700"
-                  >
-                    ×
-                  </button>
-                </span>
-              ))}
-            </div>
+    <div className="relative min-h-screen">
+      <div className="fixed top-0 right-0 left-0 -z-50 h-full overflow-hidden">
+        <GridPattern
+          width={50}
+          height={50}
+          x={-1}
+          y={-1}
+          strokeDasharray={"4 2"}
+          className={cn(
+            "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
+            "dark:[mask-image:radial-gradient(600px_circle_at_center,black,transparent)]",
           )}
-        </motion.div>
+        />
+      </div>
+
+      <div className="container mx-auto px-4 pt-20">
+        {/* Header */}
+        <SectionTitle
+          title="Projects"
+          description="Explore my collection of projects showcasing modern web development,
+            backend systems, and innovative solutions."
+        />
 
         {/* Results Count */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="mb-8 text-center"
+          className="mb-3 text-center"
         >
-          <p className="text-gray-500 dark:text-gray-400">
+          <p className="text-muted-foreground">
             Showing {filteredProjects.length} of {portfolioProjects.length}{" "}
             projects
           </p>
         </motion.div>
 
+        <div
+          className={cn(
+            "relative mx-auto w-full max-w-4xl rounded-xl p-6",
+            // Light mode
+            "border border-neutral-200 bg-white/80 shadow-sm backdrop-blur-sm",
+            // Dark mode
+            "dark:border-neutral-700 dark:bg-neutral-900/80 dark:backdrop-blur-sm",
+          )}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <motion.div
+              // initial={{ x: "20%", y: "70%", opacity: 0.15 }}
+              // animate={{ x: ["20%", "30%", "20%"], y: ["20%", "80%", "70%"] }}
+              className={cn(
+                "absolute -top-32 right-0 -z-50 h-[50vh] w-[50vh] rounded-full bg-blue-500 opacity-20",
+                "blur-[90px] dark:opacity-10",
+              )}
+            />
+
+            {/* Main Filter Card */}
+            <Card className="relative overflow-hidden border-0 p-2">
+              <div className="relative space-y-6">
+                {/* Search and Filter Toggle Row */}
+                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                  {/* Enhanced Search Bar */}
+                  <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="relative w-full md:w-auto md:flex-1"
+                  >
+                    <div className="group relative">
+                      <div className="relative rounded-xl outline-none">
+                        {/* Search Icon */}
+                        <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
+                        {/* Input Field */}
+                        <Input
+                          type="text"
+                          placeholder="Search projects, technologies..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className={cn(
+                            // Base styles
+                            "h-12 w-full rounded-xl border bg-white px-12 py-4 text-base",
+                            "shadow-none transition-all duration-200 outline-none",
+                            "placeholder:text-neutral-400",
+
+                            // Light mode
+                            "border-neutral-300",
+                            "focus:border-neutral-500 focus:ring-2 focus:ring-neutral-200",
+
+                            // Dark mode
+                            "dark:border-neutral-700 dark:bg-[#161616] dark:text-white dark:placeholder:text-neutral-500",
+                            "dark:focus:border-neutral-500 dark:focus:ring-neutral-800",
+                          )}
+                        />
+                        {/* Clear Button */}
+                        <AnimatePresence>
+                          {searchTerm && (
+                            <motion.button
+                              type="button"
+                              className="absolute top-1/2 right-12 -translate-y-1/2 rounded-full p-1 hover:text-red-500 md:right-3"
+                              onClick={() => setSearchTerm("")}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.8 }}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <X className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                            </motion.button>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Filter Toggle Button - Visible on mobile and desktop */}
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowFilters(!showFilters)}
+                    className={cn(
+                      // Base styles
+                      "h-12 w-full items-center gap-3 rounded-xl border px-4 transition-all duration-200",
+                      "hover:shadow-sm focus-visible:ring-2 focus-visible:ring-offset-2",
+
+                      // Light mode
+                      "border-neutral-300 bg-white text-neutral-800 hover:bg-neutral-50",
+                      "focus-visible:ring-neutral-300",
+
+                      // Dark mode
+                      "dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700",
+                      "dark:focus-visible:ring-neutral-500",
+
+                      // Responsive
+                      "md:w-auto",
+                    )}
+                  >
+                    <div className="flex items-center gap-2">
+                      <Filter className="h-4 w-4 text-neutral-600 dark:text-neutral-400" />
+                      <span className="font-medium">Filters</span>
+                      {activeFiltersCount > 0 && (
+                        <Badge
+                          variant="secondary"
+                          className={cn(
+                            "ml-1 border-0",
+                            // Light
+                            "bg-blue-100 text-blue-800",
+                            // Dark
+                            "dark:bg-blue-900/30 dark:text-blue-200",
+                          )}
+                        >
+                          {activeFiltersCount}
+                        </Badge>
+                      )}
+                    </div>
+                  </Button>
+                </div>
+
+                {/* Filter Controls - Conditionally shown */}
+                <AnimatePresence>
+                  {showFilters && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="space-y-6 pt-4">
+                        {/* Main Filters Grid */}
+                        <motion.div
+                          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+                          initial={{ y: -10, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.1 }}
+                        >
+                          {/* Type Filter */}
+                          <div className="group w-full">
+                            <Label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                              Project Type
+                            </Label>
+                            <Select
+                              value={selectedType}
+                              onValueChange={setSelectedType}
+                            >
+                              <SelectTrigger className="h-full w-full rounded-xl border border-neutral-300 bg-white shadow-sm transition-all hover:border-neutral-400 focus:border-blue-500 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600">
+                                <div className="flex items-center gap-3">
+                                  {selectedType === "Frontend" && (
+                                    <Globe className="h-4 w-4 text-blue-500" />
+                                  )}
+                                  {selectedType === "Backend" && (
+                                    <Database className="h-4 w-4 text-purple-500" />
+                                  )}
+                                  {selectedType === "All" && (
+                                    <Filter className="h-4 w-4 text-neutral-500" />
+                                  )}
+                                  <SelectValue placeholder="Select type" />
+                                </div>
+                              </SelectTrigger>
+                              <SelectContent className="rounded-xl border border-neutral-300 bg-white shadow-lg dark:border-neutral-700 dark:bg-neutral-800">
+                                <SelectItem
+                                  value="All"
+                                  className="rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                >
+                                  <div className="flex items-center gap-3">
+                                    <span>All Types</span>
+                                  </div>
+                                </SelectItem>
+                                <SelectItem
+                                  value="Frontend"
+                                  className="rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                                >
+                                  <div className="flex items-center gap-3">
+                                    {/* <Globe className="h-4 w-4 text-blue-500" /> */}
+                                    <span>Frontend</span>
+                                  </div>
+                                </SelectItem>
+                                <SelectItem
+                                  value="Backend"
+                                  className="rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30"
+                                >
+                                  <div className="flex items-center gap-3">
+                                    {/* <Database className="h-4 w-4 text-purple-500" /> */}
+                                    <span>Backend</span>
+                                  </div>
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+
+                          {/* Category Filter */}
+                          <div className="group w-full">
+                            <Label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                              Category
+                            </Label>
+                            <Select
+                              value={selectedCategory}
+                              onValueChange={setSelectedCategory}
+                            >
+                              <SelectTrigger className="h-12 w-full rounded-xl border border-neutral-300 bg-white shadow-sm transition-all hover:border-neutral-400 focus:border-blue-500 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600">
+                                <SelectValue placeholder="Select category" />
+                              </SelectTrigger>
+                              <SelectContent className="rounded-xl border border-neutral-300 bg-white shadow-lg dark:border-neutral-700 dark:bg-neutral-800">
+                                {categories.map((category) => (
+                                  <SelectItem
+                                    key={category}
+                                    value={category}
+                                    className="rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                  >
+                                    {category}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+
+                          {/* Technology Filter - Updated */}
+                          <div className="group w-full">
+                            <Label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                              Technologies
+                            </Label>
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  className="h-9 w-full justify-start gap-2 rounded-xl border border-neutral-300 bg-white px-4 shadow-sm transition-all hover:border-neutral-400 hover:bg-neutral-50 focus:border-blue-500 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
+                                >
+                                  <Tag className="h-4 w-4 text-pink-500" />
+                                  <span>Technologies</span>
+                                  {selectedTechnologies.length > 0 && (
+                                    <Badge
+                                      variant="secondary"
+                                      className="ml-1 bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-200"
+                                    >
+                                      {selectedTechnologies.length}
+                                    </Badge>
+                                  )}
+                                </Button>
+                              </PopoverTrigger>
+                              <PopoverContent
+                                className="w-[300px] rounded-xl border border-neutral-300 bg-white p-4 shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+                                align="start"
+                              >
+                                <div className="space-y-4">
+                                  <div className="flex items-center justify-between">
+                                    <h4 className="font-medium text-neutral-800 dark:text-neutral-200">
+                                      Filter by Technologies
+                                    </h4>
+                                    {selectedTechnologies.length > 0 && (
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() =>
+                                          setSelectedTechnologies([])
+                                        }
+                                        className="text-pink-600 hover:bg-pink-50 hover:text-pink-700 dark:text-pink-400 dark:hover:bg-pink-900/30"
+                                      >
+                                        Clear all
+                                      </Button>
+                                    )}
+                                  </div>
+                                  <Separator className="bg-neutral-200 dark:bg-neutral-700" />
+                                  <div className="max-h-[300px] overflow-y-auto">
+                                    <div className="grid grid-cols-2 gap-3">
+                                      {allTechnologies.map((tech) => (
+                                        <motion.div
+                                          key={tech}
+                                          className="flex items-center space-x-2 rounded-lg p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700/50"
+                                          whileHover={{ scale: 1.02 }}
+                                        >
+                                          <Checkbox
+                                            id={tech}
+                                            className="border-neutral-300 data-[state=checked]:border-0 data-[state=checked]:bg-pink-500 dark:border-neutral-600"
+                                            checked={selectedTechnologies.includes(
+                                              tech,
+                                            )}
+                                            onCheckedChange={() =>
+                                              handleTechnologyToggle(tech)
+                                            }
+                                          />
+                                          <Label
+                                            htmlFor={tech}
+                                            className="text-sm font-medium"
+                                          >
+                                            {tech}
+                                          </Label>
+                                        </motion.div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              </PopoverContent>
+                            </Popover>
+                          </div>
+
+                          {/* Featured Filter */}
+                          <div className="group w-full">
+                            <Label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                              Featured
+                            </Label>
+                            <Button
+                              variant={showFeaturedOnly ? "default" : "outline"}
+                              onClick={() =>
+                                setShowFeaturedOnly(!showFeaturedOnly)
+                              }
+                              className={cn(
+                                "h-9 w-full gap-2 rounded-xl border border-neutral-300 px-4 shadow-sm transition-all",
+                                showFeaturedOnly
+                                  ? "border-amber-500 bg-amber-50 text-amber-800 hover:bg-amber-100 dark:border-amber-500 dark:bg-amber-900/30 dark:text-amber-200"
+                                  : "bg-white hover:border-amber-300 hover:bg-amber-50/50 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:bg-amber-900/20",
+                              )}
+                            >
+                              <Star
+                                className={cn(
+                                  "h-4 w-4",
+                                  showFeaturedOnly
+                                    ? "fill-amber-500"
+                                    : "text-amber-500",
+                                )}
+                              />
+                              <span>Featured Only</span>
+                            </Button>
+                          </div>
+                        </motion.div>
+
+                        {/* Active Filters */}
+                        {(selectedCategory !== "All" ||
+                          selectedType !== "All" ||
+                          selectedTechnologies.length > 0 ||
+                          showFeaturedOnly) && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            transition={{ duration: 0.2 }}
+                            className="space-y-3"
+                          >
+                            <div className="flex items-center gap-2">
+                              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-600" />
+                              <span className="px-3 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                                Active filters
+                              </span>
+                              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-600" />
+                            </div>
+
+                            <div className="flex flex-wrap items-center gap-2">
+                              {selectedCategory !== "All" && (
+                                <Badge
+                                  variant="outline"
+                                  className="gap-1 rounded-full border-purple-200 bg-purple-50 px-3 py-1 text-purple-700 transition-colors hover:bg-purple-100 dark:border-purple-700 dark:bg-purple-900/30 dark:text-purple-300"
+                                  onClick={() => setSelectedCategory("All")}
+                                >
+                                  <span>Category: {selectedCategory}</span>
+                                  <X className="h-3 w-3" />
+                                </Badge>
+                              )}
+
+                              {selectedType !== "All" && (
+                                <Badge
+                                  variant="outline"
+                                  className="gap-1 rounded-full border-blue-200 bg-blue-50 px-3 py-1 text-blue-700 transition-colors hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                                  onClick={() => setSelectedType("All")}
+                                >
+                                  {selectedType === "Frontend" && (
+                                    <Globe className="h-3 w-3 text-blue-500" />
+                                  )}
+                                  {selectedType === "Backend" && (
+                                    <Database className="h-3 w-3 text-purple-500" />
+                                  )}
+                                  <span>{selectedType}</span>
+                                  <X className="h-3 w-3" />
+                                </Badge>
+                              )}
+
+                              {selectedTechnologies.map((tech) => (
+                                <Badge
+                                  key={tech}
+                                  variant="outline"
+                                  className="gap-1 rounded-full border-pink-200 bg-pink-50 px-3 py-1 text-pink-700 transition-colors hover:bg-pink-100 dark:border-pink-700 dark:bg-pink-900/30 dark:text-pink-300"
+                                  onClick={() => handleTechnologyToggle(tech)}
+                                >
+                                  <span>{tech}</span>
+                                  <X className="h-3 w-3" />
+                                </Badge>
+                              ))}
+
+                              {showFeaturedOnly && (
+                                <Badge
+                                  className="gap-1 rounded-full border-amber-200 bg-amber-50 px-3 py-1 text-amber-800 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+                                  onClick={() => setShowFeaturedOnly(false)}
+                                >
+                                  <Star className="h-3 w-3 fill-amber-500 dark:fill-amber-400" />
+                                  <span>Featured</span>
+                                  <X className="h-3 w-3" />
+                                </Badge>
+                              )}
+
+                              <Button
+                                variant="ghost"
+                                onClick={clearAllFilters}
+                                className="gap-1 rounded-full px-3 py-1 text-sm text-neutral-600 transition-colors hover:bg-red-50 hover:text-red-600 dark:text-neutral-400 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+                                size="sm"
+                              >
+                                <X className="h-3.5 w-3.5" />
+                                <span>Clear all</span>
+                              </Button>
+                            </div>
+                          </motion.div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+
         {/* Projects Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={`${searchTerm}-${selectedCategories.join(",")}-${selectedTechnologies.join(",")}-${showFeaturedOnly}`}
+            key={`${searchTerm}-${selectedCategory}-${selectedType}-${selectedTechnologies.join(",")}-${showFeaturedOnly}`}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
           >
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -409,7 +774,7 @@ export default function PortfolioPage() {
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <ProjectCard key={index} project={project} idx={index} />
+                <ProjectCard project={project} idx={index} />
               </motion.div>
             ))}
           </motion.div>
@@ -424,23 +789,13 @@ export default function PortfolioPage() {
             className="py-16 text-center"
           >
             <div className="mb-4 text-6xl">🔍</div>
-            <h3 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
-              No projects found
-            </h3>
-            <p className="mb-6 text-gray-500 dark:text-gray-400">
+            <h3 className="mb-2 text-2xl font-semibold">No projects found</h3>
+            <p className="text-muted-foreground mb-6">
               Try adjusting your search criteria or filters
             </p>
-            <button
-              onClick={() => {
-                setSearchTerm("");
-                setSelectedCategories(["All"]);
-                setSelectedTechnologies([]);
-                setShowFeaturedOnly(false);
-              }}
-              className="rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
-            >
+            <Button onClick={clearAllFilters} variant="outline">
               Clear all filters
-            </button>
+            </Button>
           </motion.div>
         )}
       </div>
