@@ -258,20 +258,23 @@ export const courses = [
     provider: "Epic React by Kent C. Dodds",
     year: "2023",
     certificate: true,
-    certificateUrl: "https://yourdomain.com/certificates/react-patterns.pdf",
+    certificateUrl:
+      "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
   },
   {
     name: "AWS Solutions Architect",
     provider: "Amazon Web Services",
     year: "2022",
     certificate: true,
-    certificateUrl: "https://yourdomain.com/certificates/aws-solutions.pdf",
+    certificateUrl:
+      "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
   },
   {
     name: "UI/UX Design Fundamentals",
     provider: "Google UX Design Certificate",
     year: "2021",
     certificate: true,
-    certificateUrl: "https://yourdomain.com/certificates/ui-ux.pdf",
+    certificateUrl:
+      "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
   },
 ];

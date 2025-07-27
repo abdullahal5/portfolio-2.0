@@ -265,7 +265,6 @@ const Blog = () => {
   return (
     <div className="pt-20">
       <SectionTitle title="Blogs" />
-
       <div className="fixed top-0 right-0 left-0 -z-50 h-[900px] overflow-hidden">
         <GridPattern
           width={50}
