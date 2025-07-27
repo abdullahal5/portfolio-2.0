@@ -49,9 +49,9 @@ const LeftSideStickyCard = () => {
 
         {/* Social Links - Modern Style */}
         <motion.div className="mb-8 flex justify-center gap-2">
-          {socialLinks.map((social) => (
+          {socialLinks.map((social, index) => (
             <motion.a
-              key={social.name}
+              key={index}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
