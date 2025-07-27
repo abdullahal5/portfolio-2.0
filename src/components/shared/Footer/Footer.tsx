@@ -124,7 +124,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-200 dark:border-neutral-800/50 dark:bg-neutral-950">
+    <footer className="mt-10 border-t border-neutral-200 bg-neutral-200 dark:border-neutral-800/50 dark:bg-neutral-950">
       <div className="mx-auto max-w-7xl px-4 py-12">
         {/* Main Footer Content */}
         <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">

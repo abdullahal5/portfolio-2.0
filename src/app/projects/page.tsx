@@ -3,15 +3,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Search,
-  Tag,
-  Star,
-  X,
-  Database,
-  Globe,
-  Filter,
-} from "lucide-react";
+import { Search, Tag, Star, X, Database, Globe, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -335,7 +327,10 @@ export default function PortfolioPage() {
           </p>
         </motion.div>
 
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className={cn(
             "relative mx-auto w-full max-w-4xl rounded-xl p-6",
             // Light mode
@@ -344,15 +339,8 @@ export default function PortfolioPage() {
             "dark:border-neutral-700 dark:bg-neutral-900/80 dark:backdrop-blur-sm",
           )}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
+          <motion.div className="relative">
             <motion.div
-              // initial={{ x: "20%", y: "70%", opacity: 0.15 }}
-              // animate={{ x: ["20%", "30%", "20%"], y: ["20%", "80%", "70%"] }}
               className={cn(
                 "absolute -top-32 right-0 -z-50 h-[50vh] w-[50vh] rounded-full bg-blue-500 opacity-20",
                 "blur-[90px] dark:opacity-10",
@@ -756,7 +744,7 @@ export default function PortfolioPage() {
               </div>
             </Card>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
         <AnimatePresence mode="wait">
