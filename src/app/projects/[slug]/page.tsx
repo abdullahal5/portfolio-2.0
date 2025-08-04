@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { use, useState } from "react";
 import {
   ArrowLeft,
   ExternalLink,
@@ -17,101 +17,23 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
+import { projects } from "@/data/project";
+import { IProject } from "@/types";
 
-const ProjectDetails = () => {
+const ProjectDetails = ({ params }: { params: Promise<{ slug: string }> }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
+  const { slug } = use(params);
 
-  const project = {
-    id: "1",
-    title: "E-Commerce Dashboard",
-    subtitle: "Full-Stack React Application",
-    description:
-      "A comprehensive e-commerce dashboard built with Next.js, featuring real-time analytics, inventory management, and customer insights. This project demonstrates modern web development practices with a focus on performance and user experience.",
-    longDescription:
-      "This e-commerce dashboard represents a complete solution for online store management. Built with cutting-edge technologies, it provides store owners with powerful tools to manage their business effectively. The application features real-time data synchronization, advanced filtering and search capabilities, responsive design, and comprehensive analytics. The project showcases expertise in full-stack development, database design, and modern UI/UX principles.",
-    heroImage:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
-    ],
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    technologies: [
-      { name: "Next.js", icon: "⚛️", color: "#000000" },
-      { name: "TypeScript", icon: "TS", color: "#3178C6" },
-      { name: "Tailwind CSS", icon: "🎨", color: "#06B6D4" },
-      { name: "Prisma", icon: "🔺", color: "#2D3748" },
-      { name: "PostgreSQL", icon: "🐘", color: "#336791" },
-      { name: "Stripe", icon: "💳", color: "#635BFF" },
-      { name: "Vercel", icon: "▲", color: "#000000" },
-      { name: "Framer Motion", icon: "🎭", color: "#FF0055" },
-    ],
-    liveUrl: "https://example.com",
-    codeUrl: "https://github.com/example/project",
-    duration: "3 months",
-    role: "Full-Stack Developer",
-    team: "Solo Project",
-    challenges: [
-      {
-        title: "Real-time Data Synchronization",
-        description:
-          "Implementing real-time updates across multiple dashboard components while maintaining optimal performance was challenging. I solved this using WebSocket connections with proper error handling and reconnection logic.",
-        solution:
-          "Used Socket.io with Redis for scalable real-time communication and implemented optimistic updates for better UX.",
-      },
-      {
-        title: "Complex State Management",
-        description:
-          "Managing complex application state with multiple data sources and user interactions required careful architecture planning.",
-        solution:
-          "Implemented Zustand for global state management with proper separation of concerns and middleware for persistence.",
-      },
-      {
-        title: "Performance Optimization",
-        description:
-          "Ensuring fast load times and smooth interactions with large datasets was crucial for user experience.",
-        solution:
-          "Implemented virtual scrolling, lazy loading, and React Query for efficient data fetching and caching.",
-      },
-    ],
-    features: [
-      "Real-time analytics dashboard",
-      "Inventory management system",
-      "Customer relationship management",
-      "Order processing and tracking",
-      "Payment integration with Stripe",
-      "Responsive design for all devices",
-      "Dark/Light mode support",
-      "Advanced filtering and search",
-      "Export functionality",
-      "Role-based access control",
-    ],
-    timeline: [
-      {
-        phase: "Planning & Design",
-        duration: "1 week",
-        description: "User research, wireframing, and system architecture",
-      },
-      {
-        phase: "Backend Development",
-        duration: "4 weeks",
-        description: "API development, database design, and authentication",
-      },
-      {
-        phase: "Frontend Development",
-        duration: "6 weeks",
-        description: "UI implementation, state management, and integrations",
-      },
-      {
-        phase: "Testing & Deployment",
-        duration: "1 week",
-        description: "Testing, optimization, and production deployment",
-      },
-    ],
-  };
+  const foundProject = projects?.find(
+    (project) => Number(project.id) === Number(slug),
+  );
+
+  if (!foundProject) {
+    return <div>Project not found</div>;
+  }
+
+  const project: IProject = foundProject;
 
   return (
     <div className="mx-auto min-h-screen max-w-7xl">
@@ -168,7 +90,7 @@ const ProjectDetails = () => {
                     Live Demo
                   </Button>
                 </Link>
-                <Link href={project?.codeUrl} target="_blank">
+                <Link href={project?.githubUrl} target="_blank">
                   <Button
                     variant="outline"
                     className="gap-2 border-white/20 bg-white/10 text-white hover:bg-white/20"
@@ -197,7 +119,7 @@ const ProjectDetails = () => {
                     Project Overview
                   </h2>
                   <p className="mb-6 leading-relaxed text-gray-600 dark:text-gray-300">
-                    {project?.longDescription}
+                    {project?.description}
                   </p>
 
                   {/* Features */}
@@ -236,7 +158,7 @@ const ProjectDetails = () => {
                     Technologies Used
                   </h2>
                   <div className="flex flex-wrap gap-3">
-                    {project?.technologies?.map((tech, idx) => (
+                    {project?.technology?.map((tech, idx) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -247,10 +169,7 @@ const ProjectDetails = () => {
                           variant="secondary"
                           className="bg-white/60 px-3 py-2 text-sm dark:bg-white/10"
                         >
-                          <span className="mr-2" style={{ color: tech?.color }}>
-                            {tech?.icon}
-                          </span>
-                          {tech?.name}
+                          {tech}
                         </Badge>
                       </motion.div>
                     ))}
@@ -499,7 +418,7 @@ const ProjectDetails = () => {
                       </Button>
                     </Link>
                     <Link
-                      href={project?.codeUrl}
+                      href={project?.githubUrl}
                       target="_blank"
                       className="block"
                     >

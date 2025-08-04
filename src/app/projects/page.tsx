@@ -27,160 +27,7 @@ import ProjectCard from "@/components/Projects/ProjectCard";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
 import SectionTitle from "@/components/shared/title/SectionTitle";
-
-// Enhanced portfolio data with frontend and backend projects
-const portfolioProjects = [
-  {
-    id: 1,
-    title: "E-Commerce Dashboard",
-    description:
-      "A comprehensive admin dashboard for managing online stores with real-time analytics, inventory management, and customer insights.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Web Application",
-    type: "Frontend",
-    tech: ["React", "Next.js", "TypeScript", "Tailwind", "Chart.js"],
-    demoUrl: "https://demo.example.com",
-    githubUrl: "https://github.com/example/ecommerce-dashboard",
-    date: "2024-01-15",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "AI Chat Application",
-    description:
-      "Real-time chat application powered by AI with smart responses, file sharing, and multi-language support.",
-    image:
-      "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "AI/ML",
-    type: "Frontend",
-    tech: ["React", "Socket.IO", "OpenAI", "Tailwind", "Framer Motion"],
-    demoUrl: "https://chat.example.com",
-    githubUrl: "https://github.com/example/ai-chat",
-    date: "2023-12-10",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "REST API for Task Management",
-    description:
-      "Scalable REST API with authentication, real-time notifications, file uploads, and comprehensive task management endpoints.",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "API Development",
-    type: "Backend",
-    tech: ["Node.js", "Express", "MongoDB", "JWT", "Socket.IO", "Multer"],
-    demoUrl: "https://api-docs.example.com",
-    githubUrl: "https://github.com/example/task-api",
-    date: "2023-11-20",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Weather Forecast App",
-    description:
-      "Beautiful weather application with detailed forecasts, interactive maps, and location-based alerts.",
-    image:
-      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Mobile App",
-    type: "Frontend",
-    tech: ["React Native", "TypeScript", "Weather API", "Maps SDK"],
-    demoUrl: "https://weather.example.com",
-    githubUrl: "https://github.com/example/weather-app",
-    date: "2023-10-05",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Microservices Architecture",
-    description:
-      "Distributed microservices system with API Gateway, service discovery, load balancing, and monitoring.",
-    image:
-      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "System Architecture",
-    type: "Backend",
-    tech: ["Docker", "Kubernetes", "Node.js", "Redis", "PostgreSQL", "Nginx"],
-    demoUrl: "https://architecture-docs.example.com",
-    githubUrl: "https://github.com/example/microservices",
-    date: "2023-09-15",
-    featured: true,
-  },
-  {
-    id: 6,
-    title: "Social Media Analytics",
-    description:
-      "Comprehensive social media analytics platform with engagement metrics, audience insights, and content optimization.",
-    image:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Analytics",
-    type: "Frontend",
-    tech: ["React", "D3.js", "Chart.js", "Tailwind", "Framer Motion"],
-    demoUrl: "https://analytics.example.com",
-    githubUrl: "https://github.com/example/social-analytics",
-    date: "2023-08-30",
-    featured: false,
-  },
-  {
-    id: 7,
-    title: "GraphQL API Server",
-    description:
-      "High-performance GraphQL API with real-time subscriptions, caching, and advanced query optimization.",
-    image:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "API Development",
-    type: "Backend",
-    tech: ["GraphQL", "Apollo Server", "PostgreSQL", "Redis", "DataLoader"],
-    demoUrl: "https://graphql-playground.example.com",
-    githubUrl: "https://github.com/example/graphql-api",
-    date: "2023-07-12",
-    featured: false,
-  },
-  {
-    id: 8,
-    title: "Learning Management System",
-    description:
-      "Modern LMS with interactive courses, progress tracking, video streaming, and certification management.",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Education",
-    type: "Frontend",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "WebRTC"],
-    demoUrl: "https://learn.example.com",
-    githubUrl: "https://github.com/example/lms",
-    date: "2023-06-25",
-    featured: true,
-  },
-  {
-    id: 9,
-    title: "Real-time Chat Backend",
-    description:
-      "Scalable chat backend with WebSocket connections, message queuing, user presence, and file sharing capabilities.",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Real-time Systems",
-    type: "Backend",
-    tech: ["Node.js", "Socket.IO", "Redis", "MongoDB", "AWS S3", "JWT"],
-    demoUrl: "https://chat-api-docs.example.com",
-    githubUrl: "https://github.com/example/chat-backend",
-    date: "2023-05-18",
-    featured: true,
-  },
-  {
-    id: 10,
-    title: "Cryptocurrency Portfolio Tracker",
-    description:
-      "Real-time cryptocurrency portfolio tracking with advanced analytics, price alerts, and market insights.",
-    image:
-      "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Finance",
-    type: "Frontend",
-    tech: ["React", "TypeScript", "Chart.js", "Tailwind", "WebSocket"],
-    demoUrl: "https://crypto-tracker.example.com",
-    githubUrl: "https://github.com/example/crypto-portfolio",
-    date: "2023-04-22",
-    featured: false,
-  },
-];
+import { projects } from "@/data/project";
 
 const categories = [
   "All",
@@ -196,7 +43,7 @@ const categories = [
 ];
 
 const allTechnologies = Array.from(
-  new Set(portfolioProjects.flatMap((project) => project.tech)),
+  new Set(projects?.flatMap((project) => project.technology)),
 ).sort();
 
 export default function PortfolioPage() {
@@ -210,11 +57,11 @@ export default function PortfolioPage() {
   const [showFilters, setShowFilters] = useState(false);
 
   const filteredProjects = useMemo(() => {
-    return portfolioProjects.filter((project) => {
+    return projects?.filter((project) => {
       const matchesSearch =
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.tech.some((tech) =>
+        project.technology.some((tech) =>
           tech.toLowerCase().includes(searchTerm.toLowerCase()),
         );
 
@@ -226,7 +73,7 @@ export default function PortfolioPage() {
 
       const matchesTechnology =
         selectedTechnologies.length === 0 ||
-        selectedTechnologies.some((tech) => project.tech.includes(tech));
+        selectedTechnologies.some((tech) => project.technology.includes(tech));
 
       const matchesFeatured = !showFeaturedOnly || project.featured;
 
@@ -268,27 +115,27 @@ export default function PortfolioPage() {
     selectedTechnologies.length +
     (showFeaturedOnly ? 1 : 0);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.1,
+  //     },
+  //   },
+  // };
 
-  const cardVariants: any = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
+  // const cardVariants: any = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       duration: 0.5,
+  //       ease: "easeOut",
+  //     },
+  //   },
+  // };
 
   return (
     <div className="relative min-h-screen">
@@ -322,7 +169,7 @@ export default function PortfolioPage() {
           className="mb-3 text-center"
         >
           <p className="text-muted-foreground">
-            Showing {filteredProjects.length} of {portfolioProjects.length}{" "}
+            Showing {filteredProjects.length} of {projects?.length}{" "}
             projects
           </p>
         </motion.div>
@@ -750,20 +597,20 @@ export default function PortfolioPage() {
         <AnimatePresence mode="wait">
           <motion.div
             key={`${searchTerm}-${selectedCategory}-${selectedType}-${selectedTechnologies.join(",")}-${showFeaturedOnly}`}
-            variants={containerVariants}
+            // variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
           >
             {filteredProjects.map((project, index) => (
-              <motion.div
+              <div
                 key={project.id}
-                variants={cardVariants}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                // variants={cardVariants}
+                // whileHover={{ y: -5 }}
+                // transition={{ duration: 0.2 }}
               >
                 <ProjectCard project={project} idx={index} />
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </AnimatePresence>

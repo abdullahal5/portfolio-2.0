@@ -35,10 +35,11 @@ import {
   SiPython,
   SiReact,
   SiChartdotjs,
+  SiMongoose,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
-type TechInfo = {
+export type TechInfo = {
   name: string;
   icon: React.ComponentType;
   color: string;
@@ -54,6 +55,7 @@ export const technologies: { [key: string]: TechInfo } = {
   "Vue.js": { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
   "Node.js": { name: "Node.js", icon: FaNodeJs, color: "#339933" },
   MongoDB: { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  Mongoose: { name: "Mongoose", icon: SiMongoose, color: "#880000" },
   Express: { name: "Express.js", icon: SiExpress, color: "#000000" },
   PostgreSQL: { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
   Firebase: { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
@@ -100,3 +102,5 @@ export const technologies: { [key: string]: TechInfo } = {
   "React Native": { name: "React Native", icon: SiReact, color: "#61DAFB" },
   "Chart.js": { name: "Chart.js", icon: SiChartdotjs, color: "#FF6384" },
 };
+
+export const techTagsList = Object.values(technologies);

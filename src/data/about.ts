@@ -38,12 +38,12 @@ export const socialLinks = [
   {
     name: "linkedin",
     icon: Linkedin,
-    href: "#",
+    href: "https://www.linkedin.com/in/fahim2006",
     color: "hover:text-blue-600 dark:hover:text-blue-400",
   },
   {
     icon: Github,
-    href: "#",
+    href: "https://github.com/abdullahal5",
     color: "hover:text-neutral-900 dark:hover:text-white",
   },
 ];
@@ -87,25 +87,25 @@ export const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (234) 567-8900",
+    value: "01914049327",
     color: "text-pink-500 dark:text-pink-400",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "hello@example.com",
+    value: "abdullahalfahin183@gmail.com",
     color: "text-blue-500 dark:text-blue-400",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: "Narayanganj, Dhaka",
     color: "text-red-500 dark:text-red-400",
   },
   {
     icon: Calendar,
     label: "Birthday",
-    value: "May 27, 1990",
+    value: "Oct 19, 2006",
     color: "text-purple-500 dark:text-purple-400",
   },
 ];
@@ -113,114 +113,93 @@ export const contactInfo = [
 export const experience = [
   {
     id: 1,
-    company: "TechCorp Solutions",
-    logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=60&h=60&fit=crop",
-    position: "Senior Full-Stack Developer",
+    company: "Ena Ema Technology",
+    logo: "https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-6/517618970_1235916548546086_1499583541101435772_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGJk3r69wit_Hj2aArb_rAbzyi9WHXpdtfPKL1Ydel21yDA5JGWtsPpIdTCdAcFRZbXo_dT_zv0c-dDdMDZRbyB&_nc_ohc=6cUdRGnluSsQ7kNvwGzSH4f&_nc_oc=AdmhRLGHB1zT884OX3SagCrb_5GwkYcwXyk_VhuM6P3RZw4AHUdRkn35q9IA-Tyf0IM&_nc_zt=23&_nc_ht=scontent.fdac147-1.fna&_nc_gid=BZeTkzh_vsjwfvlZKvgNwQ&oh=00_AfUJL0RbVs8onv5nbu_r3ddhSE_ikWr4S78PtqrYu6MtpA&oe=689684EA",
+    position: "Backend Developer",
     type: "Remote",
-    startDate: "Jan 2022",
-    endDate: "Present",
-    current: true,
+    startDate: "Jan 2025",
+    endDate: "Jul 2025",
+    current: false,
     technologies: [
-      "React",
       "Next.js",
+      "Tailwind",
       "TypeScript",
       "Node.js",
+      "Express",
       "PostgreSQL",
+      "MongoDB",
+      "Mongoose",
+      "Prisma",
+      "JWT",
       "AWS",
     ],
     description:
-      "Lead development of enterprise web applications, mentor junior developers, and architect scalable solutions for 100k+ users.",
+      "Built and optimized REST APIs using Node.js and Express for multiple live projects. Enhanced performance via query optimization and caching. Implemented secure role-based access using JWT.",
     keyFeatures: [
       {
         icon: TrendingUp,
-        title: "Performance Optimization",
+        title: "API Performance",
         description:
-          "Improved application load times by 65% through code splitting and lazy loading implementation.",
+          "Optimized REST API performance by reducing query response times with indexing and caching strategies.",
       },
       {
         icon: Users,
-        title: "Team Leadership",
+        title: "Collaboration & Reviews",
         description:
-          "Led a team of 8 developers, conducted code reviews, and established best practices.",
+          "Collaborated in a cross-functional team, conducted code reviews, and promoted clean code practices.",
       },
       {
         icon: Target,
-        title: "Project Delivery",
+        title: "Timely Delivery",
         description:
-          "Successfully delivered 12+ major features on time with 99.9% uptime.",
+          "Delivered multiple features across 5+ live projects, maintaining high reliability and minimal downtime.",
       },
       {
         icon: Award,
-        title: "Recognition",
+        title: "Achievement",
         description:
-          "Received 'Developer of the Year' award for outstanding contributions to the platform.",
+          "Recognized for technical impact and contribution to backend system scalability and security.",
       },
     ],
   },
   {
     id: 2,
-    company: "StartupXYZ",
-    logo: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=60&h=60&fit=crop",
-    position: "Frontend Developer",
-    type: "Onsite",
-    startDate: "Jun 2020",
-    endDate: "Dec 2021",
+    company: "Hamsfly limited",
+    logo: "https://media.licdn.com/dms/image/v2/D560BAQE0UDYpfnShgw/company-logo_200_200/company-logo_200_200/0/1731999612934/hams_fly_logo?e=1756944000&v=beta&t=ndwoe2Wm974RTA3LD6YFD-B8Lez8gYAS28gq_tfR-SM",
+    position: "Junior Backend Developer",
+    type: "Remote",
+    startDate: "June 2024",
+    endDate: "Sept 2024",
     current: false,
-    technologies: ["React", "JavaScript", "Sass", "Firebase", "Figma"],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "Firebase",
+      "Figma",
+      "Redux",
+    ],
     description:
-      "Built responsive web applications from scratch, collaborated with design team, and improved performance by 40%.",
+      "Developed scalable backend services using Node.js and Express, integrated third-party APIs, and collaborated with frontend and design teams to deliver production-ready features.",
     keyFeatures: [
       {
-        icon: Star,
-        title: "UI/UX Excellence",
-        description:
-          "Designed and implemented user interfaces that increased user engagement by 45%.",
-      },
-      {
         icon: TrendingUp,
-        title: "Conversion Rate",
+        title: "Backend Optimization",
         description:
-          "Optimized checkout flow resulting in 30% increase in conversion rates.",
+          "Improved API performance and reduced response time by 35% through query optimization and code refactoring.",
       },
       {
         icon: Users,
-        title: "Cross-functional Collaboration",
+        title: "Team Collaboration",
         description:
-          "Worked closely with designers and product managers to deliver pixel-perfect implementations.",
-      },
-    ],
-  },
-  {
-    id: 3,
-    company: "Digital Agency Pro",
-    logo: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=60&h=60&fit=crop",
-    position: "Junior Web Developer",
-    type: "Hybrid",
-    startDate: "Aug 2019",
-    endDate: "May 2020",
-    current: false,
-    completed: true,
-    technologies: ["HTML", "CSS", "JavaScript", "WordPress", "PHP"],
-    description:
-      "Developed custom WordPress themes, maintained client websites, and learned modern development practices.",
-    keyFeatures: [
-      {
-        icon: Globe,
-        title: "Client Projects",
-        description:
-          "Successfully delivered 25+ client websites with custom WordPress themes.",
+          "Worked closely with frontend developers and designers to ensure seamless integration and consistent data flow.",
       },
       {
-        icon: TrendingUp,
-        title: "Skill Development",
+        icon: Star,
+        title: "Database Design",
         description:
-          "Rapidly learned modern JavaScript frameworks and development methodologies.",
-      },
-      {
-        icon: Target,
-        title: "Quality Assurance",
-        description:
-          "Maintained 100% client satisfaction rate through thorough testing and support.",
+          "Designed and maintained MongoDB schemas, improving data consistency and supporting business logic efficiently.",
       },
     ],
   },
@@ -230,51 +209,53 @@ export const experience = [
 export const education = [
   {
     id: 1,
-    institution: "University of California, Berkeley",
-    degree: "Bachelor of Science in Computer Science",
-    gpa: "3.8/4.0",
-    startDate: "2015",
+    institution: "Munshiganj Polytechnic Institute, Mirkadim, Munshiganj.",
+    degree: "Diploma in Computer Science and Technology (CST).",
+    description: "Currently studing in 4th semester.",
+    gpa: "N/A",
+    startDate: "Jan 2024",
     endDate: "Present",
     current: true,
-    logo: "https://images.unsplash.com/photo-1562774053-701939374585?w=60&h=60&fit=crop",
+    // logo: "https://images.unsplash.com/photo-1562774053-701939374585?w=60&h=60&fit=crop",
   },
   {
     id: 2,
-    institution: "FreeCodeCamp",
-    degree: "Full Stack Web Development Certification",
+    institution: "Quazi Mohiuddin Model High School, Rupganj",
+    degree: "Secondary School Certificate (SSC).",
+    description: "Completed high school level.",
     gpa: "4.50/5.00",
     startDate: "2018",
     endDate: "2019",
     current: false,
     completed: true,
-    logo: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=60&h=60&fit=crop",
+    // logo: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=60&h=60&fit=crop",
   },
 ];
 
 // Courses data
 export const courses = [
   {
-    name: "Advanced React Patterns",
-    provider: "Epic React by Kent C. Dodds",
-    year: "2023",
+    name: "Web Development Course",
+    provider: "by programming hero",
+    year: "July-Dec-2023",
     certificate: true,
     certificateUrl:
-      "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
+      "https://drive.google.com/file/d/15dknnenX7ftplvHv4O1f07x6ckUDkLd7/view",
   },
   {
-    name: "AWS Solutions Architect",
-    provider: "Amazon Web Services",
-    year: "2022",
+    name: "Next Level Web Development",
+    provider: "by programming hero",
+    year: "May-Dec-2024",
     certificate: true,
     certificateUrl:
-      "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
+      "https://drive.google.com/file/d/1MBaHUbrCJ2Mp1ADQTZrj1SKsHobwgs8X/view",
   },
-  {
-    name: "UI/UX Design Fundamentals",
-    provider: "Google UX Design Certificate",
-    year: "2021",
-    certificate: true,
-    certificateUrl:
-      "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
-  },
+  // {
+  //   name: "UI/UX Design Fundamentals",
+  //   provider: "Google UX Design Certificate",
+  //   year: "2021",
+  //   certificate: true,
+  //   certificateUrl:
+  //     "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
+  // },
 ];

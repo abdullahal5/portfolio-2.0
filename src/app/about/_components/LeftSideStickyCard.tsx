@@ -4,6 +4,7 @@ import { contactInfo, socialLinks } from "@/data/about";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Download, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 const LeftSideStickyCard = () => {
   return (
@@ -24,7 +25,7 @@ const LeftSideStickyCard = () => {
           <div className="absolute h-full w-full overflow-hidden rounded-3xl border-4 border-white dark:border-gray-800">
             <Image
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
-              alt="Alex Johnson"
+              alt="Abdullah Al Fahim"
               fill
               className="object-cover"
               priority
@@ -40,10 +41,10 @@ const LeftSideStickyCard = () => {
           className="mb-6 text-center"
         >
           <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-            Alex Johnson
+            Abdullah Al Fahim
           </h1>
           <p className="font-medium text-gray-600 dark:text-gray-300">
-            Senior UI/UX Designer & Developer
+            MERN stack developer
           </p>
         </motion.div>
 
@@ -104,23 +105,29 @@ const LeftSideStickyCard = () => {
           transition={{ delay: 0.8, duration: 0.5 }}
           className="space-y-3"
         >
-          <motion.button
+          <motion.a
+            href="https://drive.google.com/uc?export=download&id=1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T"
+            target="_blank"
+            rel="noopener noreferrer"
+            download
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-900 px-4 py-3 font-medium text-white shadow-sm transition-all duration-200 hover:bg-neutral-800 hover:shadow-md dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100"
           >
             <Download className="h-4 w-4" />
             Download Resume
-          </motion.button>
+          </motion.a>
 
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex w-full items-center justify-center gap-2 rounded-xl border border-neutral-300 px-4 py-3 font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-800/50"
-          >
-            <ExternalLink className="h-4 w-4" />
-            View Portfolio
-          </motion.button>
+          <Link href={`/projects`}>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-neutral-300 px-4 py-3 font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-800/50"
+            >
+              <ExternalLink className="h-4 w-4" />
+              View Projects
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Status Indicator */}

@@ -27,7 +27,7 @@ const AnimatedSkills = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="relative  w-auto">
+      <div className="relative w-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={skills[currentSkill]}

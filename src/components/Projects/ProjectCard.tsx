@@ -8,6 +8,7 @@ import { FaStar, FaCalendarAlt } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
 import { Code, Layers, Monitor, Paintbrush } from "lucide-react";
 import { JSX } from "react";
+import { IProject } from "@/types";
 
 const typeConfig: Record<string, { icon: JSX.Element; color: string }> = {
   frontend: {
@@ -35,7 +36,7 @@ const typeConfig: Record<string, { icon: JSX.Element; color: string }> = {
 };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
+const ProjectCard = ({ project, idx }: { project: IProject; idx: number }) => {
   const type = (project.type || "default").toLowerCase();
   const { icon, color } = typeConfig[type] || typeConfig.default;
 
@@ -76,7 +77,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         {/* Image with gradient overlay */}
         <div className="relative h-56 overflow-hidden">
           <Image
-            src={project.image || "/placeholder.svg"}
+            src={project.coverImage || "/placeholder.svg"}
             width={400}
             height={400}
             className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
@@ -130,15 +131,19 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
           </div>
 
           <div className="relative mt-3 flex items-center">
-            {(project.tech || []).map((techName: string, techIdx: number) => {
-              const tech = technologies[techName] || {
-                icon: MdErrorOutline,
-                color: "#888888",
-                name: techName || "Unknown Tech",
-              };
+            {(project.technology || []).map(
+              (techName: string, techIdx: number) => {
+                const tech = technologies[techName] || {
+                  icon: MdErrorOutline,
+                  color: "#888888",
+                  name: techName || "Unknown Tech",
+                };
 
-              return <TechExpand key={techIdx} techIdx={techIdx} tech={tech} />;
-            })}
+                return (
+                  <TechExpand key={techIdx} techIdx={techIdx} tech={tech} />
+                );
+              },
+            )}
           </div>
         </div>
       </motion.div>

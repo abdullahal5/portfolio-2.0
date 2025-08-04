@@ -131,7 +131,7 @@ export function TimelineItem({
               duration: 0.5,
               ease: "easeOut",
             }}
-            className="min-h-16 w-0.5 flex-1 origin-top dark:bg-neutral-700 bg-neutral-300"
+            className="min-h-16 w-0.5 flex-1 origin-top bg-neutral-300 dark:bg-neutral-700"
           />
         )}
       </div>
@@ -148,13 +148,15 @@ export function TimelineItem({
 
           <div className="relative z-10 space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <Image
-                src={item.logo}
-                className="h-12 w-12 rounded-full object-cover"
-                width={20}
-                height={20}
-                alt="logo"
-              />
+              {item.logo && (
+                <Image
+                  src={item.logo}
+                  className="h-12 w-12 rounded-full object-cover"
+                  width={20}
+                  height={20}
+                  alt="logo"
+                />
+              )}
               <div className="flex-1">
                 <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
                   {type === "experience" ? item.position : item.degree}

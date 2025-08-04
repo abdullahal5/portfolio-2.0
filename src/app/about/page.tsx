@@ -23,7 +23,7 @@ const AboutPage = () => {
           ease: "easeInOut",
         }}
         className={cn(
-          "fixed top-16 right-20 -z-50 h-[50vh] w-[40vh] rounded-full bg-blue-500 opacity-20",
+          "fixed top-16 right-20 -z-50 h-[50vh] w-[40vh] rounded-full bg-blue-500/50 opacity-20",
           "opacity-70 blur-[100px]",
         )}
       />
@@ -99,23 +99,27 @@ const AboutPage = () => {
                 </div>
                 <div className="space-y-6 text-[15px] leading-relaxed text-gray-600 dark:text-gray-300">
                   <p>
-                    I&apos;m a Creative Director and UI/UX Designer from San
-                    Francisco, working at the intersection of design and
-                    technology. With over 8 years of experience, I specialize in
-                    creating digital products that are both beautiful and
-                    functional.
+                    I&apos;m Fahim, a web developer from Narayanganj, Dhaka,
+                    Bangladesh, with 1 year of backend hands-on experience in building
+                    full-stack applications using the MERN stack — MongoDB,
+                    Express.js, React, and Node.js.
                   </p>
                   <p>
-                    My approach combines aesthetic sensibility with technical
-                    expertise, ensuring that every project delivers exceptional
-                    user experiences while meeting business objectives.
-                    I&apos;ve had the privilege of working with startups and
-                    Fortune 500 companies alike.
+                    My journey began in July 2021 through a structured course at
+                    Programming Hero, where I built several projects and
+                    participated in a seven-week team-based development
+                    challenge. That experience helped me gain practical
+                    knowledge and insight into real-world software development
+                    workflows.
                   </p>
                   <p>
-                    When I&apos;m not designing, you can find me hiking in the
-                    mountains, experimenting with new cooking recipes, or
-                    contributing to open-source projects.
+                    I&apos;m passionate about clean code, creating useful products,
+                    and exploring emerging web technologies. My skill set
+                    includes HTML5, CSS3, JavaScript, ES6, React, React Router,
+                    Node.js, Express.js, MongoDB, Firebase, JWT, Stripe,
+                    Tailwind CSS, Material UI, Redux Toolkit, and TypeScript.
+                    I’m also familiar with Git, VS Code, Figma, Trello, and
+                    Vercel.
                   </p>
                 </div>
               </motion.div>
@@ -210,9 +214,7 @@ const AboutPage = () => {
               </motion.section>
 
               <section className="my-12 w-full">
-                <h2 className="mb-4 text-2xl font-semibold">
-                  GitHub Activity
-                </h2>
+                <h2 className="mb-4 text-2xl font-semibold">GitHub Activity</h2>
                 <div>
                   <img
                     src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=abdullahal5&theme=aura"

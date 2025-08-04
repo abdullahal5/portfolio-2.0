@@ -42,6 +42,16 @@ const Banner = () => {
     hover: { y: 5, transition: { duration: 0.3 } },
   };
 
+  const orbVariant: any = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { duration: 1.2, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Grid Background */}
@@ -60,9 +70,26 @@ const Banner = () => {
       <div className="absolute inset-0 opacity-40 dark:opacity-20"></div>
 
       {/* Simple Gradient Orbs */}
-      <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-purple-300 opacity-50 blur-3xl dark:bg-purple-500 dark:opacity-30" />
-      <div className="absolute top-1/3 right-10 h-64 w-64 rounded-full bg-pink-300 opacity-40 blur-3xl dark:bg-pink-500 dark:opacity-25" />
-      <div className="absolute bottom-20 left-1/3 h-72 w-72 rounded-full bg-blue-300 opacity-55 blur-3xl dark:bg-blue-500 dark:opacity-30" />
+      <motion.div
+        variants={orbVariant}
+        initial="hidden"
+        animate="show"
+        className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-purple-300 opacity-50 blur-3xl dark:bg-purple-500/20 dark:opacity-30"
+      />
+
+      <motion.div
+        variants={orbVariant}
+        initial="hidden"
+        animate="show"
+        className="absolute top-1/3 right-10 h-64 w-64 rounded-full bg-pink-300 opacity-40 blur-3xl dark:bg-pink-500/20 dark:opacity-25"
+      />
+
+      <motion.div
+        variants={orbVariant}
+        initial="hidden"
+        animate="show"
+        className="absolute bottom-20 left-1/3 h-72 w-72 rounded-full bg-blue-300 opacity-55 blur-3xl dark:bg-blue-500/30 dark:opacity-30"
+      />
 
       {/* Main Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
@@ -119,9 +146,9 @@ const Banner = () => {
           initial="hidden"
           animate="show"
           transition={{ delay: 0.6 }}
-          className="mb-5 mt-2"
+          className="mt-2 mb-5"
         >
-          <AnimatedSkills/>
+          <AnimatedSkills />
         </motion.div>
 
         {/* Description */}
@@ -144,7 +171,10 @@ const Banner = () => {
           animate="show"
           className="flex flex-col gap-4 sm:flex-row"
         >
-          <motion.button
+          <motion.a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=abdullahalfahin183@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             variants={item}
             transition={{ delay: 1 }}
             whileHover={{ scale: 1.05 }}
@@ -153,9 +183,12 @@ const Banner = () => {
           >
             <Mail className="h-4 w-4" />
             Get In Touch
-          </motion.button>
+          </motion.a>
 
-          <motion.button
+          <motion.a
+            href="https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view"
+            rel="noopener noreferrer"
+            target="_blank"
             variants={item}
             transition={{ delay: 1.1 }}
             whileHover={{ scale: 1.05 }}
@@ -164,7 +197,7 @@ const Banner = () => {
           >
             <FileText className="h-4 w-4" />
             Resume
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* Scroll Indicator */}
