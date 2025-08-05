@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface Challenge {
   title: string;
   description: string;
@@ -34,3 +35,8 @@ export interface IProject {
   demoUrl?: string;
 }
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
