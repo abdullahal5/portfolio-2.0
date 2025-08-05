@@ -36,6 +36,7 @@ import {
   SiReact,
   SiChartdotjs,
   SiMongoose,
+  SiFramer,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
@@ -47,6 +48,7 @@ export type TechInfo = {
 
 export const technologies: { [key: string]: TechInfo } = {
   React: { name: "React", icon: FaReact, color: "#61DAFB" },
+  "Framer Motion": { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
   "Next.js": { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
   Tailwind: { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
   "Three.js": { name: "Three.js", icon: SiThreedotjs, color: "#000000" },
