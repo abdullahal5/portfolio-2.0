@@ -174,7 +174,7 @@ export function BlogCard({ article }: BlogCardProps) {
 
 export default function BlogSection() {
   return (
-    <div className="min-h-screen px-4 py-16">
+    <div className="px-4 py-16">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <motion.div

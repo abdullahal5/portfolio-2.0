@@ -4,7 +4,7 @@ export const projects: IProject[] = [
   {
     id: 1,
     title: "Health Care",
-    subtitle: "Full-Stack React Application",
+    subtitle: "Full-Stack Application",
     description:
       "A modern, full-featured healthcare web application designed to provide trusted medical services and information to patients. The platform offers a seamless user experience for booking appointments, exploring medical specialties, and understanding treatment processes — all while emphasizing patient safety, comfort, and care quality.",
     coverImage:
@@ -21,16 +21,15 @@ export const projects: IProject[] = [
       "PostgreSQL",
     ],
     images: [
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
+      "https://res.cloudinary.com/dhcjdfpf7/image/upload/v1754986102/portfolio-proejects/Screenshot_2025-08-12_140509_nwdhxl.png",
+      "https://res.cloudinary.com/dhcjdfpf7/image/upload/v1754986190/portfolio-proejects/Screenshot_2025-08-12_140936_cwsdtc.png",
+      "https://res.cloudinary.com/dhcjdfpf7/image/upload/v1754986390/portfolio-proejects/Screenshot_2025-08-12_141253_tn9rkv.png",
+      "https://res.cloudinary.com/dhcjdfpf7/image/upload/v1754986480/portfolio-proejects/Screenshot_2025-08-12_141418_xa08yo.png",
     ],
     liveUrl: "https://healthcare-client.vercel.app",
     githubUrl: "https://github.com/abdullahal5/healthcare-client",
     duration: "3 months",
     role: "Full-Stack Developer",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     team: "Solo Project",
     challenges: [
       {
@@ -64,7 +63,8 @@ export const projects: IProject[] = [
       "Secure authentication with JWT",
       "Admin dashboard with analytics",
       "Responsive design",
-      "SSL commerce payment integration",
+      "Stripe payment integration",
+      "Video calls between doctor and patients",
     ],
     timeline: [
       {
@@ -83,7 +83,7 @@ export const projects: IProject[] = [
         phase: "Frontend Development",
         duration: "4 weeks",
         description:
-          "Built the dashboard and form flows using React, Redux-toolkit, and Tailwind CSS.",
+          "Built the dashboard and form flows using Next js, Redux-toolkit, and Tailwind CSS.",
       },
       {
         phase: "Testing & Deployment",

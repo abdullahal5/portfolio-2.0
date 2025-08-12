@@ -127,7 +127,7 @@ export default function SkillsSection() {
   const activeCategory = skillCategories.find((cat) => cat.id === activeTab);
 
   return (
-    <div className="min-h-screen px-4 py-16">
+    <div className="px-4 py-16">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <SectionTitle

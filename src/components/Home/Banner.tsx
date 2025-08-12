@@ -159,9 +159,9 @@ const Banner = () => {
           transition={{ delay: 0.8 }}
           className="mb-8 max-w-2xl text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300"
         >
-          Crafting scalable solutions and building the future, one line of code
-          at a time. Passionate about clean architecture and innovative
-          technologies.
+          I’m passionate about building scalable solutions and shaping the
+          future through code. I love working with clean architecture and
+          exploring innovative technologies that make a real impact.
         </motion.p>
 
         {/* CTA Buttons */}

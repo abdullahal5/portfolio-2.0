@@ -11,8 +11,8 @@ const skills = [
   "MongoDB & PostgreSQL",
   "Tailwind CSS & Framer Motion",
   "REST APIs & GraphQL",
-  "AWS & Docker",
-  "Git & CI/CD",
+  // "AWS & Docker",
+  "Git & Figma",
 ];
 
 const AnimatedSkills = () => {

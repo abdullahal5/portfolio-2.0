@@ -11,17 +11,17 @@ const defaultCode = `// Interactive JavaScript Playground
 
 // Example 1: Profile Object (Default)
 const profile = {
-  name: 'Nazmul Hossain',
-  title: 'Full-Stack Developer | Cloud Enthusiast | Problem Solver',
+  name: 'Abdullah Al Fahim',
+  title: 'Full-Stack Developer | Backend Developer',
   skills: [
     'React', 'Next.js', 'Redux', 'Express',
-    'MySQL', 'MongoDB', 'Docker', 'AWS', 'TypeScript',
-    'GraphQL', 'Git', 'Linux', 'Discord Development'
+   'MongoDB', 'TypeScript',
+    'GraphQL', 'Git'
   ],
   hardWorker: true,
   quickLearner: true,
   problemSolver: true,
-  yearsOfExperience: 4,
+  yearsOfExperience: 1,
   hireable: function() {
     return (
       this.hardWorker &&
@@ -80,12 +80,12 @@ export default function CodePlayground() {
   }
 
   return (
-    <div className="min-h-screen p-4">
+    <div className="p-4">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="mx-auto max-w-7xl"
+        className="mx-auto max-w-7xl pt-14"
       >
         {/* Header */}
         <SectionTitle
@@ -139,14 +139,6 @@ export default function CodePlayground() {
             </div>
             <LivePreview code={code} />
           </motion.div>
-        </motion.div>
-
-        {/* Footer */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-8 text-center text-gray-400"
-        >
-          <p>Built with Next.js, Framer Motion, and Tailwind CSS</p>
         </motion.div>
       </motion.div>
     </div>

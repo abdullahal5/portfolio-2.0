@@ -45,7 +45,10 @@ const ProjectDetails = ({ params }: { params: Promise<{ slug: string }> }) => {
           className="mb-8"
         >
           <Link href="/projects">
-            <Button variant="ghost" className="gap-2">
+            <Button
+              variant="ghost"
+              className="cursor-pointer gap-2 rounded-full border border-neutral-700"
+            >
               <ArrowLeft className="h-4 w-4" />
               Back to Projects
             </Button>
@@ -84,16 +87,22 @@ const ProjectDetails = ({ params }: { params: Promise<{ slug: string }> }) => {
               </h1>
               <p className="mb-4 text-xl text-gray-200">{project?.subtitle}</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link href={project?.liveUrl} target="_blank">
-                  <Button className="gap-2">
+                <Link
+                  href={project?.liveUrl}
+                  target="_blank"
+                >
+                  <Button className="gap-2 cursor-pointer">
                     <ExternalLink className="h-4 w-4" />
                     Live Demo
                   </Button>
                 </Link>
-                <Link href={project?.githubUrl} target="_blank">
+                <Link
+                  href={project?.githubUrl}
+                  target="_blank"
+                >
                   <Button
                     variant="outline"
-                    className="gap-2 border-white/20 bg-white/10 text-white hover:bg-white/20"
+                    className="gap-2 cursor-pointer border-white/20 bg-white/5 text-white hover:bg-white/20"
                   >
                     <Github className="h-4 w-4" />
                     View Code
@@ -412,7 +421,10 @@ const ProjectDetails = ({ params }: { params: Promise<{ slug: string }> }) => {
                       target="_blank"
                       className="block"
                     >
-                      <Button className="w-full gap-2" variant="default">
+                      <Button
+                        className="w-full cursor-pointer gap-2"
+                        variant="default"
+                      >
                         <ExternalLink className="h-4 w-4" />
                         Live Demo
                       </Button>
@@ -423,7 +435,7 @@ const ProjectDetails = ({ params }: { params: Promise<{ slug: string }> }) => {
                       className="block"
                     >
                       <Button
-                        className="w-full gap-2 bg-transparent"
+                        className="w-full cursor-pointer gap-2 border border-neutral-700 bg-transparent"
                         variant="outline"
                       >
                         <Github className="h-4 w-4" />

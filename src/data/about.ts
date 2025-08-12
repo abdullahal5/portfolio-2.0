@@ -1,6 +1,5 @@
 import {
   Facebook,
-  Twitter,
   Linkedin,
   Phone,
   Mail,
@@ -15,37 +14,45 @@ import {
   Target,
 } from "lucide-react";
 import { Calendar, MapPin, Code } from "lucide-react";
+import { FaDiscord } from "react-icons/fa";
 
 export const socialLinks = [
   {
-    name: "facebook",
-    icon: Facebook,
-    href: "#",
-    color: "hover:text-[#0866FF] dark:hover:text-[#0866FF]",
+    name: "Github",
+    icon: Github,
+    href: "https://github.com/abdullahal5",
+    color: "hover:text-neutral-900 dark:hover:text-white",
   },
   {
-    name: "twitter",
-    icon: Twitter,
-    href: "#",
-    color: "hover:text-blue-500 dark:hover:text-blue-400",
+    name: "Discord",
+    icon: FaDiscord,
+    href: "https://discordapp.com/users/1050280128158109828",
+    color: "hover:text-neutral-900 dark:hover:text-[#4C59F0]",
   },
   {
-    name: "Email",
-    href: "mailto:your.email@example.com",
-    icon: Mail,
-    color: "hover:text-red-600 dark:hover:text-red-400",
-  },
-  {
-    name: "linkedin",
+    name: "Linkedin",
     icon: Linkedin,
     href: "https://www.linkedin.com/in/fahim2006",
     color: "hover:text-blue-600 dark:hover:text-blue-400",
   },
   {
-    icon: Github,
-    href: "https://github.com/abdullahal5",
-    color: "hover:text-neutral-900 dark:hover:text-white",
+    name: "Email",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=abdullahalfahin183@gmail.com",
+    icon: Mail,
+    color: "hover:text-red-600 dark:hover:text-red-400",
   },
+  {
+    name: "Facebook",
+    icon: Facebook,
+    href: "https://www.facebook.com/abdullahal.fahim.9421",
+    color: "hover:text-[#0866FF] dark:hover:text-[#0866FF]",
+  },
+  // {
+  //   name: "Twitter",
+  //   icon: Twitter,
+  //   href: "#",
+  //   color: "hover:text-blue-500 dark:hover:text-blue-400",
+  // },
 ];
 
 export const services = [
@@ -250,12 +257,12 @@ export const courses = [
     certificateUrl:
       "https://drive.google.com/file/d/1MBaHUbrCJ2Mp1ADQTZrj1SKsHobwgs8X/view",
   },
-  // {
-  //   name: "UI/UX Design Fundamentals",
-  //   provider: "Google UX Design Certificate",
-  //   year: "2021",
-  //   certificate: true,
-  //   certificateUrl:
-  //     "https://drive.google.com/file/d/1URRTWHorRYZ8V1wzwfUOIlZs5jOpBL4T/view?usp=drive_link",
-  // },
+  {
+    name: "Certificate of Steller",
+    provider: "by programming hero",
+    year: "jan 2025",
+    certificate: true,
+    certificateUrl:
+      "https://drive.google.com/file/d/1BadosjyZp5bIgWjg44NtZ4W49PVWfzm-/view?usp=sharing",
+  },
 ];

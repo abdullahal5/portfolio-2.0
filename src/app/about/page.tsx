@@ -105,7 +105,7 @@ const AboutPage = () => {
                     Express.js, React, and Node.js.
                   </p>
                   <p>
-                    My journey began in July 2021 through a structured course at
+                    My journey began in July 2023 through a structured course at
                     Programming Hero, where I built several projects and
                     participated in a seven-week team-based development
                     challenge. That experience helped me gain practical
@@ -118,7 +118,7 @@ const AboutPage = () => {
                     includes HTML5, CSS3, JavaScript, ES6, React, React Router,
                     Node.js, Express.js, MongoDB, Firebase, JWT, Stripe,
                     Tailwind CSS, Material UI, Redux Toolkit, and TypeScript.
-                    I’m also familiar with Git, VS Code, Figma, Trello, and
+                    I’m also familiar with Git, VS Code, Figma, and
                     Vercel.
                   </p>
                 </div>

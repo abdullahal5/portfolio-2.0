@@ -169,8 +169,7 @@ export default function PortfolioPage() {
           className="mb-3 text-center"
         >
           <p className="text-muted-foreground">
-            Showing {filteredProjects.length} of {projects?.length}{" "}
-            projects
+            Showing {filteredProjects.length} of {projects?.length} projects
           </p>
         </motion.div>
 
@@ -603,12 +602,7 @@ export default function PortfolioPage() {
             className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
           >
             {filteredProjects.map((project, index) => (
-              <div
-                key={project.id}
-                // variants={cardVariants}
-                // whileHover={{ y: -5 }}
-                // transition={{ duration: 0.2 }}
-              >
+              <div key={project.id}>
                 <ProjectCard project={project} idx={index} />
               </div>
             ))}

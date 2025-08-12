@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
 import SectionTitle from "../shared/title/SectionTitle";
+import Link from "next/link";
 
 // Common freelancer FAQ data
 const faqData = [
@@ -170,13 +171,15 @@ export default function FAQSection() {
               I&apos;m here to help! Feel free to reach out for a free
               consultation about your project.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center rounded-lg bg-neutral-900 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-none dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200 dark:focus:ring-neutral-400 dark:focus:ring-offset-neutral-900"
-            >
-              Get in Touch
-            </motion.button>
+            <Link href={"/contact"}>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex cursor-pointer items-center rounded-lg bg-neutral-900 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-none dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200 dark:focus:ring-neutral-400 dark:focus:ring-offset-neutral-900"
+              >
+                Get in Touch
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>

@@ -12,9 +12,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   Mail,
   MapPin,
-  Github,
-  Linkedin,
-  Twitter,
   Send,
   CheckCircle,
   Loader2,
@@ -25,6 +22,7 @@ import {
 import SectionTitle from "@/components/shared/title/SectionTitle";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
+import { socialLinks } from "@/data/about";
 
 interface FormData {
   fullName: string;
@@ -182,20 +180,6 @@ export default function ContactPage() {
     );
   };
 
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/yourusername",
-      label: "LinkedIn",
-    },
-    {
-      icon: Twitter,
-      href: "https://twitter.com/yourusername",
-      label: "Twitter",
-    },
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -285,13 +269,14 @@ export default function ContactPage() {
                       Message Sent!
                     </h3>
                     <p className="text-neutral-600 dark:text-neutral-400">
-                      Thank you for reaching out. I&apos;ll get back to you soon.
+                      Thank you for reaching out. I&apos;ll get back to you
+                      soon.
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid gap-4 md:grid-cols-2">
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         <Label
                           htmlFor="fullName"
                           className="text-neutral-900 dark:text-neutral-100"
@@ -314,7 +299,7 @@ export default function ContactPage() {
                         )}
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         <Label
                           htmlFor="email"
                           className="text-neutral-900 dark:text-neutral-100"
@@ -337,7 +322,7 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <Label
                         htmlFor="subject"
                         className="text-neutral-900 dark:text-neutral-100"
@@ -355,7 +340,7 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <Label
                         htmlFor="message"
                         className="text-neutral-900 dark:text-neutral-100"
@@ -369,7 +354,7 @@ export default function ContactPage() {
                           handleInputChange("message", e.target.value)
                         }
                         className={`min-h-[140px] border-neutral-200 bg-white/50 text-neutral-900 transition-all duration-200 hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-100 dark:hover:border-neutral-600 ${errors.message ? "border-red-500 focus:border-red-500" : "focus:border-neutral-400 dark:focus:border-neutral-500"}`}
-                        placeholder="Tell me about your project or just say hello..."
+                        placeholder="What's on your mind?"
                       />
                       {errors.message && (
                         <p className="text-sm text-red-500">{errors.message}</p>
@@ -379,7 +364,7 @@ export default function ContactPage() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-white transition-all duration-300 hover:from-blue-700 hover:to-purple-700 disabled:opacity-80"
+                      className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-white transition-all duration-300 hover:from-blue-700 hover:to-purple-700 disabled:opacity-80"
                     >
                       <span className="relative z-10 flex items-center justify-center">
                         {isSubmitting ? (
@@ -433,16 +418,18 @@ export default function ContactPage() {
                     <div className="flex items-center space-x-3">
                       <Mail className="h-4 w-4 flex-shrink-0 text-blue-500 dark:text-blue-400" />
                       <a
-                        href="mailto:hello@yourname.dev"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=abdullahalfahin183@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-sm break-all text-neutral-600 transition-colors hover:text-blue-600 dark:text-neutral-400 dark:hover:text-blue-400"
                       >
-                        hello@yourname.dev
+                        abdullahalfahin183@gmail.com
                       </a>
                     </div>
                     <div className="flex items-center space-x-3">
                       <MapPin className="h-4 w-4 flex-shrink-0 text-blue-500 dark:text-blue-400" />
                       <span className="text-sm text-neutral-600 dark:text-neutral-400">
-                        San Francisco, CA
+                        Narayanganj, Dhaka
                       </span>
                     </div>
                   </div>
@@ -456,14 +443,14 @@ export default function ContactPage() {
                   <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                     Connect Online
                   </h3>
-                  <div className="flex space-x-3">
+                  <div className="flex flex-wrap items-center justify-center space-x-2">
                     {socialLinks.map((social, index) => (
                       <motion.a
-                        key={social.label}
+                        key={social.name}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="transform rounded-xl bg-neutral-100/50 p-3 transition-all duration-200 hover:scale-110 hover:bg-neutral-200/50 dark:bg-neutral-800/50 dark:hover:bg-neutral-700/50"
+                        className={`mt-2 transform rounded-xl border border-white/20 bg-white/10 p-3 transition-all duration-200 hover:scale-110 ${social.color}`}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         initial={{ opacity: 0, y: 20 }}
@@ -471,7 +458,7 @@ export default function ContactPage() {
                         transition={{ delay: 0.2 + index * 0.1 }}
                       >
                         <social.icon className="h-4 w-4 text-neutral-600 transition-colors hover:text-blue-600 dark:text-neutral-400 dark:hover:text-blue-400" />
-                        <span className="sr-only">{social.label}</span>
+                        <span className="sr-only">{social.name}</span>
                       </motion.a>
                     ))}
                   </div>

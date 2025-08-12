@@ -73,7 +73,9 @@ const Navbar = () => {
             <div className="relative">
               <Image
                 className="h-9 w-9 rounded-full ring-2 ring-white/20 dark:ring-white/10"
-                src={avatar}
+                src={
+                  "https://res.cloudinary.com/dhcjdfpf7/image/upload/v1747929540/qmvqqs3uu40fmmseli8o.jpg"
+                }
                 height={36}
                 width={36}
                 alt="Avatar"

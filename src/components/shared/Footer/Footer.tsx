@@ -3,15 +3,9 @@
 import type React from "react";
 
 import { motion } from "framer-motion";
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  ExternalLink,
-  ArrowUp,
-} from "lucide-react";
 import Link from "next/link";
+import { socialLinks } from "@/data/about";
+import { ArrowUp, ExternalLink } from "lucide-react";
 
 // Navigation data organized by sections
 const footerNavigation = {
@@ -19,7 +13,7 @@ const footerNavigation = {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
-    { name: "Services", href: "/services" },
+    // { name: "Services", href: "/services" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ],
@@ -36,34 +30,6 @@ const footerNavigation = {
     { name: "Terms of Service", href: "/terms" },
   ],
 };
-
-// Social media links
-const socialLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/yourusername",
-    icon: Github,
-    color: "hover:text-neutral-900 dark:hover:text-white",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://linkedin.com/in/yourusername",
-    icon: Linkedin,
-    color: "hover:text-blue-600 dark:hover:text-blue-400",
-  },
-  {
-    name: "Twitter",
-    href: "https://twitter.com/yourusername",
-    icon: Twitter,
-    color: "hover:text-blue-500 dark:hover:text-blue-400",
-  },
-  {
-    name: "Email",
-    href: "mailto:your.email@example.com",
-    icon: Mail,
-    color: "hover:text-red-600 dark:hover:text-red-400",
-  },
-];
 
 function ScrollToTop() {
   const scrollToTop = () => {
@@ -136,14 +102,14 @@ export default function Footer() {
               className="mb-6"
             >
               <h3 className="mb-3 text-xl font-bold text-neutral-900 dark:text-neutral-100">
-                Alex Johnson
+                Abdullah Al Fahim
               </h3>
               <p className="mb-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                 Full-stack developer crafting modern web experiences with clean
                 code and thoughtful design.
               </p>
               {/* Social Links */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.name}
@@ -230,7 +196,7 @@ export default function Footer() {
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Copyright */}
             <div className="text-center text-sm text-neutral-500 sm:text-left dark:text-neutral-500">
-              <p>© {currentYear} Alex Johnson. All rights reserved.</p>
+              <p>© {currentYear} Abdullah Al Fahim. All rights reserved.</p>
               <p className="mt-1">
                 Built with{" "}
                 <span className="font-medium text-neutral-700 dark:text-neutral-300">

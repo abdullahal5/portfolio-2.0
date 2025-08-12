@@ -24,7 +24,7 @@ const LeftSideStickyCard = () => {
         >
           <div className="absolute h-full w-full overflow-hidden rounded-3xl border-4 border-white dark:border-gray-800">
             <Image
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+              src="https://res.cloudinary.com/dhcjdfpf7/image/upload/v1747929540/qmvqqs3uu40fmmseli8o.jpg"
               alt="Abdullah Al Fahim"
               fill
               className="object-cover"
@@ -90,8 +90,16 @@ const LeftSideStickyCard = () => {
                 <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
                   {info.label}
                 </p>
-                <p className="text-sm font-semibold text-neutral-900 dark:text-white">
+                <p className="flex items-center justify-between text-sm font-semibold text-neutral-900 dark:text-white">
                   {info.value}
+                  {/* {info.label === "Email" && (
+                    <Button
+                      onClick={() => window.navigator.clipboard}
+                      className="h-4 w-4 cursor-pointer"
+                    >
+                      <CopyIcon className="" />
+                    </Button>
+                  )} */}
                 </p>
               </div>
             </motion.div>
